@@ -13,5 +13,25 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('homepage');
 });
+
+Route::get('/userProfil', function()
+{
+	return View::make('userProfil');
+});
+Route::get('/articleDetail', function()
+{
+	return View::make('articleDetail');
+});
+Route::get('/articleGallery', function()
+{
+	return View::make('articleGallery');
+});
+
+App::missing(function($exception)
+{
+    return View::make('error404');
+});
+
+
