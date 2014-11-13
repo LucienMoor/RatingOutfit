@@ -47,13 +47,15 @@ class UserController extends \BaseController {
     {
       echo 'Inscription success !!! Congratulations '.Input::get('pseudo');
       $user = new User;
-      
-      $user->pseudo = Input::;
-      $user->password = Input::;
-      $user->email = 'Irène';
-      $user->birthdate = '1950-06-22';
-      $user->country = '1950-06-22';
-      $user->presentation = '1950-06-22';
+
+      $user->pseudo = Input::get('pseudo');
+      $user->password = Input::get('password');
+      $user->email = Input::get('email');
+     
+      $user->birthdate = Input::get('birthDate');
+      $user->country = Input::get('country');
+      $user->presentation = Input::get('description');
+      //TODO image
       $user->save();
       
     }
