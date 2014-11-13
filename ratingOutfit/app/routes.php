@@ -29,9 +29,18 @@ Route::get('/articleGallery', function()
 	return View::make('articleGallery');
 });
 
+Route::resource('user', 'UserController');
+
 App::missing(function($exception)
 {
     return View::make('error404');
 });
 
+
+
+Route::get('/test', function()
+{
+	$user = User::find(1);
+  var_dump($user);
+});
 
