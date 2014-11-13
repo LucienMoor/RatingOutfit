@@ -14,11 +14,28 @@
 Route::get('/', function()
 {
 	return View::make('homepage');
+  //return View::make('userProfil');
 });
 
 Route::get('/userProfil', function()
 {
-	return View::make('userProfil');
+	return View::make('profil/userProfil');
+});
+Route::get('/userProfilPresentation', function()
+{
+	return View::make('profil/userProfilPresentation');
+});
+Route::get('/favoriteArticle', function()
+{
+	return View::make('subview/favoriteArticle');
+});
+Route::get('/favoriteUser', function()
+{
+	return View::make('subview/favoriteUser');
+});
+Route::get('/comments', function()
+{
+	return View::make('subview/comments');
 });
 Route::get('/articleDetail', function()
 {
@@ -28,10 +45,12 @@ Route::get('/articleGallery', function()
 {
 	return View::make('articleGallery');
 });
-
 App::missing(function($exception)
 {
     return View::make('error404');
 });
+
+Route::resource('profil', 'ProfilController');
+
 
 
