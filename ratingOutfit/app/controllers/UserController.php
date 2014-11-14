@@ -32,10 +32,10 @@ class UserController extends \BaseController {
 	public function store()
 	{
       $rules = array(
-        'pseudo' => 'required|min:3|max:20|alpha',
+        'pseudo' => 'required|unique:Users|min:3|max:20|alpha',
         'password' => 'required|min:6|max:12',
         'confirmpassword' => 'required|same:password',
-        'email' => 'required|email',
+        'email' => 'required|unique:Users|email',
         'birthDate' => 'date'
     );
     $validator = Validator::make(Input::all(), $rules);
@@ -52,10 +52,15 @@ class UserController extends \BaseController {
       $user->password = Input::get('password');
       $user->email = Input::get('email');
      
-      $user->birthdate = Input::get('birthDate');
+      if (Input::has('birthDate'))
+      {
+          $user->birthdate = Input::get('birthDate');
+      }
+      
       $user->country = Input::get('country');
       $user->presentation = Input::get('description');
-      //TODO image
+      //$user->picture = Input::get('picture');
+      //TODO prendre l'image sur le serveur et enregistrer le chemin
       $user->save();
       
     }
