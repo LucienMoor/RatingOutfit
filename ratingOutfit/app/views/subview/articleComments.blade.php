@@ -7,17 +7,21 @@
 <body>
   <div class="showcomment">
    @foreach(ArticleComment::all() as $value)
+    {{ Form::open(array('url' => URL::action('UserController@reportUser'), 'id' => 'reportUser','method' => 'post')) }}
     <tr>
-            <td>{{ User::find(1)->pseudo }}</td>
+            
+            <td>{{ Form::label('user', User::find($value->user_ID)->pseudo) }}</td>
             <td>{{ $value->comment }}</td>
             <td>{{ $value->created_at }}</td>
-            <td>{{ Form::button('Signal this user') }}</td>
+            <td>{{ Form::submit('Signal this user') }}</td>
+            <td>{{ Form::hidden('userID', $value->user_ID) }}</td>
     </tr> 
+    {{Form::close()}}
     <br />
     <br />
     <br />
     @endforeach
-  </div>  
+  </div>
   @include('subview/articleCommentForm')
 </body>
 </html>

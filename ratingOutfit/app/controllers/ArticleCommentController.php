@@ -23,7 +23,7 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function create()
 	{
-    return View::make('subview/articleCommentForm');
+    return View::make('subview/articleComments');
 	}
 
 
@@ -69,7 +69,7 @@ class ArticleCommentController extends \BaseController {
         $comment = ArticleComment::find($id);
 
        
-        return View::make('subview/comments')
+        return View::make('subview/articleComments')
             ->with('comment', $comment);
 	}
 
@@ -108,6 +108,8 @@ class ArticleCommentController extends \BaseController {
 	{
 		//
 	}
+  
+
 
 
 }

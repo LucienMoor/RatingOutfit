@@ -45,6 +45,7 @@ Route::get('/articleGallery', function()
 	return View::make('articleGallery');
 });
 
+<<<<<<< HEAD
 Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
 {
     return View::make('subview/loginForm');
@@ -56,6 +57,9 @@ Route::get('zone_reservee', array('before' => 'auth', function()
 }));
 
 Route::post('/login', 'LoginController@loginValidate');
+=======
+Route::post('articleComments', 'UserController@reportUser');
+>>>>>>> 38a95c079291dc7cdfaa59dc49fe37ebf391e2a5
 
 App::missing(function($exception)
 {
