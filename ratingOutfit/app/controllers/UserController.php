@@ -36,10 +36,10 @@ class UserController extends \BaseController {
 	public function store()
 	{
       $rules = array(
-        'pseudo' => 'required|unique:Users|min:3|max:20|alpha',
+        'pseudo' => 'required|unique:Users,pseudo|min:3|max:20|alpha',
         'password' => 'required|min:6|max:12',
         'confirmpassword' => 'required|same:password',
-        'email' => 'required|unique:Users|email',
+        'email' => 'required|unique:Users,email|email',
         'birthDate' => 'date'
     );
     $validator = Validator::make(Input::all(), $rules);
@@ -53,7 +53,7 @@ class UserController extends \BaseController {
       $user = new User;
 
       $user->pseudo = Input::get('pseudo');
-      $user->password = Input::get('password');
+      $user->password = Hash::make(Input::get('password'));
       $user->email = Input::get('email');
      
       if (Input::has('birthDate'))
@@ -113,7 +113,7 @@ class UserController extends \BaseController {
 		//TODO vérifier que l'utilisateur à le droit de modifier
     
     // get the user
-   $nerd = User::find($id);
+   $user = User::find($id);
 
     // show the edit form and pass the user
     return View::make('subview/editUserForm')
@@ -130,14 +130,13 @@ class UserController extends \BaseController {
 	public function update($id)
 	{
 		 $rules = array(
-        'password' => 'required|min:6|max:12',
         'newPassword' => 'min:6|max:12',
-        'confirmpassword' => 'same:newPassword',
-        'email' => 'unique:Users|email',
+        'confirmNewPassword' => 'same:newPassword',
+        'email' => 'unique:Users,email,'.$id.'|email',
         'birthDate' => 'date'
     );
     $validator = Validator::make(Input::all(), $rules);
- 
+
     if ($validator->fails()) {
        return Redirect::to('user/'.$id.'/edit')->withErrors($validator)->withInput(Input::except('password'));
     }
@@ -145,16 +144,16 @@ class UserController extends \BaseController {
     {
       $user = User::find($id);;
 
-      $user->password = Input::get('newPassword');
+      $user->password =  Hash::make(Input::get('newPassword'));
       $user->email = Input::get('email');
      
-      if (Input::has('birthDate'))
+      if (Input::has('birthdate'))
       {
-          $user->birthdate = Input::get('birthDate');
+          $user->birthdate = Input::get('birthdate');
       }
       
       $user->country = Input::get('country');
-      $user->presentation = Input::get('description');
+      $user->presentation = Input::get('presentation');
       
        if($_FILES['picture']['error'] == 0){
           //Récupération des informations sur le fichier
@@ -166,11 +165,12 @@ class UserController extends \BaseController {
           if (in_array($extension_upload, $extensions_autorisees)){
               //Le fichier aura le nom du fichier uploader 
               $user->picture = $name;
+            //TODO Supprimer l'ancienne image
               move_uploaded_file($_FILES['picture']['tmp_name'], $destination);
           }
        }
       $user->save();
-      Session::flash('message', 'User successfully created !');
+      Session::flash('message', 'User successfully updated !');
       return Redirect::to('user');
     }
 	}
@@ -184,7 +184,13 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		 DB::table('Users')->where('id', $id)->delete();
+		    // delete
+        $user = User::find($id);
+        $user->delete();
+
+        // redirect
+        Session::flash('message', 'User successfully deleted!');
+        return Redirect::to('user');
 	}
   
   

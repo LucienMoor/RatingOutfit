@@ -45,6 +45,17 @@ Route::get('/articleGallery', function()
 	return View::make('articleGallery');
 });
 
+Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
+{
+    return View::make('subview/loginForm');
+}));
+
+Route::get('zone_reservee', array('before' => 'auth', function()
+{
+    echo 'Vous avez bien été identifié '.Auth::user()->username;
+}));
+
+Route::post('/login', 'LoginController@loginValidate');
 
 App::missing(function($exception)
 {
