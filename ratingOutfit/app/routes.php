@@ -14,7 +14,6 @@
 Route::get('/', function()
 {
 	return View::make('homepage');
-  //return View::make('userProfil');
 });
 
 Route::get('/userProfil', function()
@@ -46,11 +45,12 @@ Route::get('/articleGallery', function()
 	return View::make('articleGallery');
 });
 
+
 App::missing(function($exception)
 {
     return View::make('error404');
 });
 
-Route::resource('profil', 'ProfilController');
 Route::resource('user', 'UserController');
+Route::resource('articleComment', 'ArticleCommentController');
 
