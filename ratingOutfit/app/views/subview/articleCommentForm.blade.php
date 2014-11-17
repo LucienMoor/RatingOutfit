@@ -5,7 +5,7 @@
 	<title>Commnents</title>
 </head>
 <body>
-  {{ Form::open(array('url' => 'articleComment', 'method' => 'POST')) }}
+  {{ Form::open(array('url' => 'articleComment', 'method' => 'post')) }}
   <div class="articlecomment">
     {{ Form::label('addcomment', 'add your comment: ') }}
     {{ Form::textarea('comment','Write a comment here!') }}

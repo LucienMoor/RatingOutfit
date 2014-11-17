@@ -45,6 +45,7 @@ Route::get('/articleGallery', function()
 	return View::make('articleGallery');
 });
 
+Route::post('articleComments', 'UserController@reportUser');
 
 App::missing(function($exception)
 {
