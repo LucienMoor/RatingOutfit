@@ -6,40 +6,45 @@
 </head>
 <body>
 
-    {{ Form::open(array('url' => 'user', 'method' => 'POST')) }}
+    {{ Form::open(array('url' => 'user', 'method' => 'POST','files'=>true)) }}
   
-    <p>
+       
+     <div>
       {{ $errors->first('pseudo', '<p>:message</p>') }}
       <strong>{{ Form::label('pseudo', 'Pseudo* : ')  }}</strong>
       {{ Form::text('pseudo') }}
-     <br />
+     </div>
+     <div>
       {{ $errors->first('password', '<p>:message</p>') }}
       <strong>{{ Form::label('password', 'Password* : ')  }}</strong>
       {{ Form::password('password') }}
-     <br />
+     
       {{ $errors->first('confirmpassword', '<p>:message</p>') }}
       <strong>{{ Form::label('confirmpassword', 'Confirm the password* : ')  }}</strong>
       {{ Form::password('confirmpassword') }}
-     <br />
+      
+     </div>
+     <div>
       {{ $errors->first('email', '<p>:message</p>') }}
      <strong>{{ Form::label('email', 'Email* : ')  }}</strong>
       {{ Form::email('email') }}
-     <br />
+     
      <strong>{{ Form::label('country', 'Country : ')  }}</strong>
       {{ Form::text('country') }}
-     <br />
+     
       {{ $errors->first('birthDate', '<p>:message</p>') }}
       <strong>{{ Form::label('birthDate', 'Birth date : ')  }}</strong>
       {{ Form::input('date', 'birthDate'); }}
-     <br />
+     </div>
+     <div>
       {{ Form::label('picture', 'Would you like to already upload a picture for your profil ? : ')  }}
       {{ Form::file('picture') }}
-     <br />
+     </div>
+    <div>
        {{ Form::label('description', 'Write a bit about you : ')  }}
        {{ Form::textarea('description') }}
-
+        </div>
     {{ Form::submit('Send !') }}
-    </p>
   
     {{ Form::close() }}
 </body>
