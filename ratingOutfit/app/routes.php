@@ -29,6 +29,18 @@ Route::get('/articleGallery', function()
 	return View::make('articleGallery');
 });
 
+//root for Article
+Route::resource('articleDetail', 'articleDetailController');
+
+
+Route::get('/pictures/article/{pictureName}', function($picture)
+{
+  
+	$filepath = '/home/action/workspace/ratingOutfit/pictures/article/' . $picture;
+	return HTML::image($filepath);
+});
+
+
 App::missing(function($exception)
 {
     return View::make('error404');
