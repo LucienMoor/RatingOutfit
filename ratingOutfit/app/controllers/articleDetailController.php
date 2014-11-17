@@ -9,7 +9,8 @@ class articleDetailController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('articleDetail.index');
+    $articles=Article::all();
+		return View::make('articleDetail.index')->with('articles',$articles);
 	}
 
 
@@ -34,9 +35,9 @@ class articleDetailController extends \BaseController {
               $rules = array(
             'title'       => 'required',
             'picture'      => 'required',
-            'description' => 'required'
-            //'gender'=> 'required',
-            //'style'=>'required'
+            'description' => 'required',
+            'gender'=> 'required',
+            'style'=>'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -66,7 +67,7 @@ class articleDetailController extends \BaseController {
           $extension_upload = $infosfichier['extension'];
           $extensions_autorisees = array('png', 'jpg');
           $name = $_FILES['picture']['name'];
-          $destination=__DIR__.'/../../pictures/article/'.$name;
+          $destination=__DIR__.'/../../public/pictures/article/'.$name;
           if (in_array($extension_upload, $extensions_autorisees)){
               //Le fichier aura le nom du fichier uploader  
               move_uploaded_file($_FILES['picture']['tmp_name'], $destination);
@@ -87,7 +88,7 @@ class articleDetailController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		        $article = Article::find($id);
+        $article = Article::find($id);
 
         // show the view and pass the nerd to it
         return View::make('articleDetail.show')
@@ -103,7 +104,11 @@ class articleDetailController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		    $article = Article::find($id);
+
+        // show the edit form and pass the nerd
+        return View::make('articleDetail.edit')
+            ->with('article', $article);
 	}
 
 
@@ -115,7 +120,51 @@ class articleDetailController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		              $rules = array(
+            'title'       => 'required',
+            //'picture'      => 'required',
+            'description' => 'required',
+            'gender'=> 'required',
+            'style'=>'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('articleDetail/'.$id.'/edit')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+    
+            // edit
+          
+            $article = Article::find($id);
+            $article->title       = Input::get('title');
+          if($_FILES['picture']['error'] == 0){
+            $article->picture      = $_FILES['picture']['name'];
+          }
+            $article->description = Input::get('description');
+            $article->user_ID = Session::get('userID');
+            $article->gender_ID=Input::get('gender');
+            $article->style_ID=Input::get('style');
+            $article->save();
+         //upload image
+        if($_FILES['picture']['error'] == 0){
+          //Récupération des informations sur le fichier
+          $infosfichier = pathinfo($_FILES['picture']['name']);
+          $extension_upload = $infosfichier['extension'];
+          $extensions_autorisees = array('png', 'jpg');
+          $name = $_FILES['picture']['name'];
+          $destination=__DIR__.'/../../public/pictures/article/'.$name;
+          if (in_array($extension_upload, $extensions_autorisees)){
+              //Le fichier aura le nom du fichier uploader  
+              move_uploaded_file($_FILES['picture']['tmp_name'], $destination);
+            
+          }
+        }
+            // redirect
+            return Redirect::to('articleDetail');
+       }
 	}
 
 
@@ -127,7 +176,12 @@ class articleDetailController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		  // delete
+        $article = Article::find($id);
+        $article->delete();
+
+        // redirect
+        return Redirect::to('articleDetail');
 	}
 
 

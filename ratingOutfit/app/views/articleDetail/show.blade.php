@@ -1,7 +1,9 @@
+<!-- app/views/nerds/show.blade.php -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Show specific article</title>
+    <title>specific article</title>
 </head>
 <body>
 <div class="container">
@@ -9,18 +11,13 @@
 <h1>Showing {{ $article->title }}</h1>
 
     <div class="jumbotron text-center">
-        <h2>{{ $article->title }}</h2>
         <p>
-            <strong>Description:</strong> {{ $article->description }}<br>
-            <strong>Picture:</strong> {{ $article->picture }}
-          <strong>nb Vote:</strong> {{ $article->nbVote }}
-          <strong>Point:</strong> {{ $article->point }}
-          
-          <strong>Picture:</strong>{{HTML::image('30609440-homme-d-affaires-choque-par-la-mauvaise-information.jpg')}}
-          <strong>style:</strong> {{ $article->style_ID }}
-           <strong>gender:</strong> {{ $article->gender_ID }}
-
-
+            <strong>description:</strong> {{ $article->description }}<br>
+           <strong>picture:</strong> {{HTML::image("/pictures/article/$article->picture")}}<br>
+          <strong>nombre de vote:</strong> {{ $article->nbVote }}<br>
+          <strong>nombre de point:</strong> {{ $article->point }}<br>
+          <strong>style:</strong> {{ $article->style->style }}<br>
+          <strong>gender:</strong> {{ $article->gender->gender }}<br>
           
         </p>
     </div>

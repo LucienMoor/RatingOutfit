@@ -1,22 +1,23 @@
-<!DOCTYPE html>
+<!-- app/views/nerds/edit.blade.php -->
 <?php
-  Session::put('userID', 1);
   $genderArray=Gender::getGenderArray();
   $styleArray=Style::getStyleArray();
 ?>
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Create article</title>
+    <title>modify an article</title>
 </head>
 <body>
 <div class="container">
 
-<h1>Create article</h1>
+<h1>Edit {{ $article->title }}</h1>
 
 
-{{ Form::open(array('url' => 'articleDetail','files' => true)) }}
+{{ Form::model($article, array('route' => array('articleDetail.update', $article->id), 'method' => 'PUT','files'=>true)) }}
 
-    <div class="form-group">
+<div class="form-group">
         {{ Form::label('title', 'Title') }}
         {{ Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
     </div>
@@ -40,7 +41,7 @@
     </div>
 
 
-    {{ Form::submit('Create the article', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Edit the article', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
 
