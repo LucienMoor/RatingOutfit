@@ -18,7 +18,23 @@ Route::get('/', function()
 
 Route::get('/userProfil', function()
 {
-	return View::make('userProfil');
+	return View::make('profil/userProfil');
+});
+Route::get('/userProfilPresentation', function()
+{
+	return View::make('profil/userProfilPresentation');
+});
+Route::get('/favoriteArticle', function()
+{
+	return View::make('subview/favoriteArticle');
+});
+Route::get('/favoriteUser', function()
+{
+	return View::make('subview/favoriteUser');
+});
+Route::get('/comments', function()
+{
+	return View::make('subview/comments');
 });
 Route::get('/articleDetail', function()
 {
@@ -28,6 +44,7 @@ Route::get('/articleGallery', function()
 {
 	return View::make('articleGallery');
 });
+
 
 //root for Article
 Route::resource('articleDetail', 'articleDetailController');
@@ -41,9 +58,27 @@ Route::get('/pictures/article/{pictureName}', function($picture)
 });
 
 
+Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
+{
+    return View::make('subview/loginForm');
+}));
+
+Route::get('zone_reservee', array('before' => 'auth', function()
+{
+    echo 'Vous avez bien été identifié '.Auth::user()->username;
+}));
+
+Route::post('/login', 'LoginController@loginValidate');
+
+
+Route::post('articleComments', 'UserController@reportUser');
+
+
 App::missing(function($exception)
 {
     return View::make('error404');
 });
 
+Route::resource('user', 'UserController');
+Route::resource('articleComment', 'ArticleCommentController');
 

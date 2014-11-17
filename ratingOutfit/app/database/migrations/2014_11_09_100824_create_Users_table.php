@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration {
 			$table->timestamps();
 			$table->string('pseudo');
 			$table->string('email');
-			$table->string('picture');
+			$table->string('picture')->default("defaultImage.png");
 			$table->integer('nbReport')->unsigned()->default('0');
 			$table->date('birthdate')->nullable();
 			$table->string('country')->nullable();

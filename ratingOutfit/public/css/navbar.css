@@ -1,0 +1,14 @@
+.navbar{
+  overflow:hidden;
+  margin-left: auto;
+  margin-right: auto;
+  width: 480px; }
+  .navbar a {
+    display: block;
+    margin: 10px;
+    position: relative;
+    float: left;
+    width 25%;
+    text-decoration: none;
+    color: #997A8D;
+}
