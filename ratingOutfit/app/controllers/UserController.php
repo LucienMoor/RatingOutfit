@@ -70,7 +70,7 @@ class UserController extends \BaseController {
           $extension_upload = $infosfichier['extension'];
           $extensions_autorisees = array('png', 'jpg');
           $name = $_FILES['picture']['name'];
-          $destination=__DIR__.'/../../pictures/user/'.$name;
+          $destination=__DIR__.'/../../public/pictures/user/'.$name;
           if (in_array($extension_upload, $extensions_autorisees)){
               //Le fichier aura le nom du fichier uploader 
               $user->picture = $name;
@@ -96,9 +96,7 @@ class UserController extends \BaseController {
      $user = User::find($id);
 
     // show the view and pass the user to it
-    //TODO montrer le profil associé
-    //return View::make('subView/singleUserView.blade.php')
-      //->with('user', $user);
+    return View::make('profil/userProfilPresentation')->with('user', $user);
 	}
 
 
@@ -144,7 +142,7 @@ class UserController extends \BaseController {
     {
       $user = User::find($id);;
 
-      $user->password =  Hash::make(Input::get('newPassword'));
+      $user->password = Hash::make(Input::get('newPassword'));
       $user->email = Input::get('email');
      
       if (Input::has('birthdate'))
@@ -161,7 +159,7 @@ class UserController extends \BaseController {
           $extension_upload = $infosfichier['extension'];
           $extensions_autorisees = array('png', 'jpg');
           $name = $_FILES['picture']['name'];
-          $destination=__DIR__.'/../../pictures/user/'.$name;
+          $destination=__DIR__.'/../../public/pictures/user/'.$name;
           if (in_array($extension_upload, $extensions_autorisees)){
               //Le fichier aura le nom du fichier uploader 
               $user->picture = $name;
@@ -193,13 +191,6 @@ class UserController extends \BaseController {
         return Redirect::to('user');
 	}
   
-    public function reportUser()
-  {
-    $userID=Input::get('userID');
-    $user=User::find($userID);
-    $user->nbReport=$user->nbReport+1;
-    $user->save(); 
-    return View::make('subview/articleComments');
-  }
+  
 
 }

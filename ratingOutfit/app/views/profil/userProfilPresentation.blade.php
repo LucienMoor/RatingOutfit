@@ -8,10 +8,11 @@
 <body>
   @include('profil/userProfil')
   <div class="bodyprofil">
-    <img src="cat1.jpg" alt="Profil picture" />
+   
+   {{ HTML::image("pictures/user/$user->picture") }}
     <button type="button">Love</button>
-    <h1>{{User::find(1)->pseudo}}</h1>
-    <h2>{{User::find(1)->presentation}}</h2> 
+    <h1>{{$user->pseudo}}</h1>
+    <h2>{{$user->presentation}}</h2> 
   </div>  
 </body>
 </html>
