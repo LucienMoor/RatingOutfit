@@ -8,13 +8,7 @@
 
 <h1>Edit {{ $user->pseudo }}</h1>
 
-{{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}
-
-    <div>
-        {{ $errors->first('actualPassword', '<p>:message</p>') }}
-         <strong>{{ Form::label('actualPassword', 'Actual Password* : ') }} </strong>
-        {{ Form::password('actualPassword') }}
-    </div>
+{{ Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PUT','files'=>true)) }}
   
     <div>
         {{ $errors->first('newPassword', '<p>:message</p>') }}
@@ -34,9 +28,9 @@
      <strong>{{ Form::label('country', 'Country : ')  }}</strong>
       {{ Form::text('country') }}
      
-      {{ $errors->first('birthDate', '<p>:message</p>') }}
-      <strong>{{ Form::label('birthDate', 'Birth date : ')  }}</strong>
-      {{ Form::input('date', 'birthDate'); }}
+      {{ $errors->first('birthdate', '<p>:message</p>') }}
+      <strong>{{ Form::label('birthdate', 'Birth date : ')  }}</strong>
+      {{ Form::input('date', 'birthdate'); }}
     </div>
   
     <div>
@@ -44,8 +38,8 @@
       {{ Form::file('picture') }}
      </div>
     <div>
-        <strong>{{ Form::label('description', 'Presentation : ')  }}  </strong>
-       {{ Form::textarea('description') }}
+        <strong>{{ Form::label('presentation', 'Presentation : ')  }}  </strong>
+       {{ Form::textarea('presentation') }}
    </div>
 
     {{ Form::submit('Save changes') }}

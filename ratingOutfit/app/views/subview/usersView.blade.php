@@ -43,7 +43,10 @@
             <td>
 
                 <!-- delete the user (uses the destroy method DESTROY /users/{id} -->
-                <!-- we will add this later since its a little more complicated than the other two buttons -->
+                {{ Form::open(array('url' => 'user/' . $value->id)) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Delete this User') }}
+                {{ Form::close() }}
 
                 <!-- show the user (uses the show method found at GET /users/{id} -->
                 <a class="btn btn-small btn-success" href="{{ URL::to('user/' . $value->id) }}">Show this User</a>
