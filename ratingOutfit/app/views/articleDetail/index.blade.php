@@ -1,7 +1,7 @@
 <!doctype html>
+{{Session::put('userID', 1)}}
 <html>
     <body>
-      <p>test</p>
       <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
       <table>
       <tr>
@@ -19,7 +19,7 @@
         <p>
           <td>{{$value->title}}</td>
           <td> {{ $value->description }}</td>
-          <td>{{ $value->nbVote }}</td>
+          <td>{{ $value->nbVotes() }}</td>
           <td> {{ $value->point }}</td>
           
           <td>{{HTML::image("pictures/article/$value->picture")}}</td>

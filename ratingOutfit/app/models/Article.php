@@ -10,4 +10,8 @@ class Article extends Eloquent {
   public function style(){
     return ($this->belongsTo('Style','style_ID'));
   }
+  public function nbVotes(){
+    $array= ($this->hasMany('Vote','user_ID'));
+    return count($array);
+  }
 }

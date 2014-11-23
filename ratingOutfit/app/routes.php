@@ -56,6 +56,7 @@ Route::get('/pictures/article/{pictureName}', function($picture)
 	return HTML::image($filepath);
 });
 
+Route::post('upVote','ArticleVoteController@upVote');
 
 Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
 {
