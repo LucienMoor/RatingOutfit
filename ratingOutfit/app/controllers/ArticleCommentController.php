@@ -34,7 +34,7 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function store()
 	{
-    Session::put('user_ID',1);
+    Session::put('user_ID',2);
 		$rules = array(
       'comment'      =>  'required'
     ); 

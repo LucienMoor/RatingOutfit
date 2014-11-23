@@ -97,8 +97,8 @@ class UserController extends \BaseController {
 
     // show the view and pass the user to it
     //TODO montrer le profil associé
-    //return View::make('subView/singleUserView.blade.php')
-      //->with('user', $user);
+    return View::make('profil/userProfilPresentation')
+    ->with('user', $user);
 	}
 
 

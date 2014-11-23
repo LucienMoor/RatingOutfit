@@ -6,11 +6,13 @@
   {{ HTML::style('css/navbar.css') }}
 </head>
 <body>
-  <div class="navbar">
-    <a href="/userProfilPresentation"> Profil </a>
+  {{Session::put('user_ID',1)}}
+  @include('subview/header')
+  <nav>
+    <a href="{{ URL::to('user/' . Session::get('user_ID')) }}"> Profil </a>
     <a href="/favoriteArticle"> Favorite Articles </a>
     <a href="/favoriteUser"> Favorite Users </a>
     <a href="/comments"> Comments </a>
-  </div>   
+  </nav>   
 </body>
 </html>

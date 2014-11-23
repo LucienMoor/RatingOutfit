@@ -20,10 +20,7 @@ Route::get('/userProfil', function()
 {
 	return View::make('profil/userProfil');
 });
-Route::get('/userProfilPresentation', function()
-{
-	return View::make('profil/userProfilPresentation');
-});
+
 Route::get('/favoriteArticle', function()
 {
 	return View::make('subview/favoriteArticle');
@@ -54,4 +51,4 @@ App::missing(function($exception)
 
 Route::resource('user', 'UserController');
 Route::resource('articleComment', 'ArticleCommentController');
-
+Route::resource('search','SearchBarController');
