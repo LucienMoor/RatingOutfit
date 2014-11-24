@@ -56,12 +56,6 @@ Route::get('/pictures/article/{pictureName}', function($picture)
 	return HTML::image($filepath);
 });
 
-
-Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
-{
-    return View::make('subview/loginForm');
-}));
-
 Route::get('zone_reservee', array('before' => 'auth', function()
 {
     echo 'Vous avez bien été identifié '.Auth::user()->pseudo;
@@ -69,10 +63,6 @@ Route::get('zone_reservee', array('before' => 'auth', function()
 
 Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
-
-Route::post('articleComments', 'UserController@reportUser');
-Route::post('/login', 'LoginController@loginValidate');
-
 
 Route::post('articleComments', 'UserController@reportUser');
 
