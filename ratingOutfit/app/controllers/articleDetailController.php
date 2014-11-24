@@ -32,6 +32,7 @@ class articleDetailController extends \BaseController {
 	 */
 	public function store()
 	{
+    Session::put('userID', 1);
               $rules = array(
             'title'       => 'required',
             'picture'      => 'required',

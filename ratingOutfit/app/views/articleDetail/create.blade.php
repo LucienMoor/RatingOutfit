@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+{{Session::put('userID', 1)}}
 <?php
-  Session::put('userID', 1);
+  
   $genderArray=Gender::getGenderArray();
   $styleArray=Style::getStyleArray();
 ?>
