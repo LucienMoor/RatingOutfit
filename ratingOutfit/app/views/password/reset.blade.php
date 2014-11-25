@@ -1,6 +1,10 @@
-{{ Form::open(array('action' => 'RemindersController@postRest'))}}
-   
-    {{ Form::hidden(token, $token) }}
+@if (Session::has('error'))
+           {{ Session::get('error') }}         
+@endif
+
+{{ Form::open(array('action' => 'RemindersController@postReset'))}}
+    {{ Form::hidden('token', $token) }}
+    
     <strong>{{ Form::label('email', 'Email : ') }} </strong>
     {{ Form::email('email') }}
 
