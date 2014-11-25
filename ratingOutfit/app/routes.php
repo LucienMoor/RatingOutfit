@@ -44,7 +44,7 @@ Route::get('/articleGallery', function()
 {
 	return View::make('articleGallery');
 });
-
+Route::resource('articleFavorite', 'ArticleFavorisController');
 //root for Article
 Route::resource('articleDetail', 'articleDetailController');
 
