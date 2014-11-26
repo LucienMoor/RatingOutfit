@@ -24,11 +24,9 @@
           {{Form::text('point','5')}}
             {{ Form::submit('upvote', array('class' => 'btn btn-primary')) }}
           {{ Form::close() }}
-          {{ Form::open(array('url' => 'articleFavorite')) }}
-          {{Form::hidden('userID', Session::get('userID'))}}
-          {{Form::hidden('articleID',$article->id)}}
-            {{ Form::submit('ajouter au favoris', array('class' => 'btn btn-primary')) }}
-          {{ Form::close() }}
+             <?php $data=array('userID'=>Session::get('userID'),'articleID'=>$article->id);
+             echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
+            ?>
           
         </p>
     </div>

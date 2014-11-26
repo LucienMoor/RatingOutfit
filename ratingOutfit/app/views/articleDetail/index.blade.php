@@ -29,7 +29,14 @@
           {{ Form::open(array('url' => 'articleDetail/' . $value->id, 'class' => 'pull-right')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
-            {{ Form::close() }}</td>
+            {{ Form::close() }}
+          </td>
+          <td>
+            <?php $data=array('userID'=>Session::get('userID'),'articleID'=>$value->id);
+             echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
+            ?>
+
+          </td>
           <td><a class="btn btn-small btn-success" href="{{ URL::to('articleDetail/' . $value->id) }}">Show this article</a></td>
           <td><a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit this article</a></td>
       </tr>

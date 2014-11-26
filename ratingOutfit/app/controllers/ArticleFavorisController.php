@@ -46,11 +46,13 @@ class ArticleFavorisController extends \BaseController {
         } else {
     
             // store
-          
+          if(!Favorite::ifExist(Input::get('userID'),Input::get('articleID'))){
             $favoris = new Favorite;
             $favoris->user_ID=Input::get('userID');
             $favoris->articles_ID=Input::get('articleID');
             $favoris->save();
+          }
+
             // redirect
             return Redirect::to('articleDetail/'.Input::get('articleID'));
        }
