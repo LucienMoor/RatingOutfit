@@ -41,7 +41,7 @@ Route::get('/articleGallery', function()
 {
 	return View::make('articleGallery');
 });
-
+Route::resource('articleFavorite', 'ArticleFavorisController');
 //root for Article
 Route::resource('articleDetail', 'articleDetailController');
 
@@ -67,10 +67,6 @@ Route::get('zone_reservee', array('before' => 'auth', function()
 
 Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
-
-Route::post('articleComments', 'UserController@reportUser');
-Route::post('/login', 'LoginController@loginValidate');
-
 
 Route::post('articleComments', 'UserController@reportUser');
 

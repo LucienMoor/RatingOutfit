@@ -24,6 +24,11 @@
           {{Form::text('point','5')}}
             {{ Form::submit('upvote', array('class' => 'btn btn-primary')) }}
           {{ Form::close() }}
+          {{ Form::open(array('url' => 'articleFavorite')) }}
+          {{Form::hidden('userID', Session::get('userID'))}}
+          {{Form::hidden('articleID',$article->id)}}
+            {{ Form::submit('ajouter au favoris', array('class' => 'btn btn-primary')) }}
+          {{ Form::close() }}
           
         </p>
     </div>
