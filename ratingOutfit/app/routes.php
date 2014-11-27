@@ -31,7 +31,7 @@ Route::get('/favoriteUser', function()
 });
 Route::get('/comments', function()
 {
-	return View::make('subview/comments');
+	return View::make('subview/userComment');
 });
 Route::get('/articleDetail', function()
 {
@@ -68,7 +68,8 @@ Route::get('zone_reservee', array('before' => 'auth', function()
 Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
 
-Route::post('articleComments', 'UserController@reportUser');
+Route::post('/home',['as' => 'home','uses' => 'UserController@reportUser']);
+Route::post('search', 'SearchBarController@search');
 
 App::missing(function($exception)
 {
@@ -77,4 +78,5 @@ App::missing(function($exception)
 
 Route::resource('user', 'UserController');
 Route::resource('articleComment', 'ArticleCommentController');
-Route::resource('search','SearchBarController');
+Route::resource('userComment', 'UserCommentController');
+

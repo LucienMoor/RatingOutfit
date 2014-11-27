@@ -192,6 +192,13 @@ class UserController extends \BaseController {
         return Redirect::to('user');
 	}
   
-  
+  public function reportUser()
+  {
+      $userID=Input::get('userID');
+      $user=User::find($userID);
+      $user->nbReport=$user->nbReport+1;
+      $user->save(); 
+      return View::make('hello');  
+  }
 
 }
