@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('homepage');
-});
+Route::get('/', 'HomePageController@getHomePage');
 
 Route::get('/userProfil', function()
 {

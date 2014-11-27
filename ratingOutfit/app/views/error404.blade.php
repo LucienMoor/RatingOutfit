@@ -35,8 +35,7 @@
 </head>
 <body>
 	<div class="welcome">
-    <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIGHT JOE LE PATRIN SISI!!!!!</p>
-		<h1>You ARE LOST MWAHAHAHA!!</h1>
+		<h1>This is not the page you're looking for</h1>
 	</div>
 </body>
 </html>

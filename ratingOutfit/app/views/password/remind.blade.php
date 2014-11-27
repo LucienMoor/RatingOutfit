@@ -1,8 +1,8 @@
 @if (Session::has('error'))
-           {{ Session::get('error') }}         
+           {{ Session::get('error') }}        
 @endif
 @if (Session::has('status'))
-           {{ Session::get('status') }}         
+           {{ Session::get('status') }}      
 @endif
 
 {{ Form::open(array('action' => 'RemindersController@postRemind'))}}

@@ -6,7 +6,7 @@
 <body>
 <div class="container">
 
-<h1>Edit {{ $user->pseudo }}</h1>
+<h1>Edit {{{ $user->pseudo }}}</h1>
 
 {{ Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PUT','files'=>true)) }}
   
