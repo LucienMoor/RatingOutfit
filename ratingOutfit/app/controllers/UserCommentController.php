@@ -1,6 +1,6 @@
 <?php
 
-class ArticleCommentController extends \BaseController {
+class UserCommentController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,10 +9,9 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function index()
 	{
-		$articleComment = ArticleComment::all();
+		$userComment = UserComment::all();
     
-    return View::make('subview/articleComments')->with('articleComment', $articleComment);
-    
+    return View::make('subview/userComment')->with('userComment', $userComment);
 	}
 
 
@@ -23,7 +22,7 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function create()
 	{
-    return View::make('subview/articleComments');
+		return View::make('subview/userComment');
 	}
 
 
@@ -34,27 +33,26 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function store()
 	{
-    Session::put('user_ID',2);
 		$rules = array(
       'comment'      =>  'required'
     ); 
     $validator=Validator::make(Input::all(),$rules);
     
     if($validator->fails()){
-      return Redirect::to('articleComment/create');
+      return Redirect::to('userComment/create');
     }
     else {
             // store
-             $articleComment = new ArticleComment;
-             $articleComment->user_ID      = Auth::id();
-             $articleComment->article_ID   = 1;//Article::find(1)->id;
-             $articleComment->comment      = Input::get('comment');
-             $articleComment->save();
+             $userComment = new UserComment;
+             $userComment->userEditor_ID      = Auth::id(); 
+             $userComment->userDestinated_ID   = 2;//User::find(1)->id; TODO user's id not hard coding
+             $userComment->comment      = Input::get('comment');
+             $userComment->save();
        // redirect
             Session::flash('message', 'Successfully created a comment!');
-            return Redirect::to('articleComment');
+            return Redirect::to('userComment');
         }
-    ;}
+	}
 
 
 	/**
@@ -65,11 +63,10 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
-        $comment = ArticleComment::find($id);
+		$comment = UserComment::find($id);
 
        
-        return View::make('subview/articleComments')
+        return View::make('subview/userComment')
             ->with('comment', $comment);
 	}
 
@@ -82,7 +79,7 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//cannot edit an comment 
+		//
 	}
 
 
@@ -94,7 +91,7 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//cannot update a comment
+		//
 	}
 
 
@@ -106,10 +103,8 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//cannot delete a comment
+		//
 	}
-  
-
 
 
 }

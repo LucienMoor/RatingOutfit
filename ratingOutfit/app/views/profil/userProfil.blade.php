@@ -5,12 +5,13 @@
 	<title>Laravel PHP Framework</title>
   {{ HTML::style('css/navbar.css') }}
 </head>
-<body>
-  <div class="navbar">
-    <a href="/userProfilPresentation"> Profil </a>
+<body>  
+  @include('subview/header')
+  <nav>
+    <a href="{{ URL::to('user/'.$user->id) }}"> Profil </a>
     <a href="/favoriteArticle"> Favorite Articles </a>
     <a href="/favoriteUser"> Favorite Users </a>
-    <a href="/comments"> Comments </a>
-  </div>   
+    <a href="{{ URL::to('/allUserComment/'.$user->id) }}"> Comments </a>
+  </nav>   
 </body>
 </html>

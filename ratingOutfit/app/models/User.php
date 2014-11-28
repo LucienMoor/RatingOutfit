@@ -82,6 +82,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return $this->email;
     }
+
   public function getFavoriteArticles()
     {
     $favorites = Favorite::where('user_ID','=',$this->id)->get();
@@ -94,5 +95,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
     return $articles;
   }
-
+  
+   public function comment()
+    {
+        $comment = UserComment::where('userDestinated_ID','=',$this->id)->get();
+        return $comment;
+    }
+  
 }

@@ -5,7 +5,7 @@
 	<title>Laravel PHP Framework</title>
 </head>
 <body>
-  <div class="showcomment">
+  <div class="showcommentarticle">
    @foreach(ArticleComment::all() as $value)
     {{ Form::open(array('url' => URL::action('UserController@reportUser'), 'id' => 'reportUser','method' => 'post')) }}
     <tr>

@@ -17,10 +17,7 @@ Route::get('/userProfil', function()
 {
 	return View::make('profil/userProfil');
 });
-Route::get('/userProfilPresentation', function()
-{
-	return View::make('profil/userProfilPresentation');
-});
+
 Route::get('/favoriteArticle', function()
 {
 	return View::make('subview/favoriteArticle');
@@ -29,10 +26,10 @@ Route::get('/favoriteUser', function()
 {
 	return View::make('subview/favoriteUser');
 });
-Route::get('/comments', function()
+/*Route::get('/userComment/', function()
 {
-	return View::make('subview/comments');
-});
+	return View::make('subview/userCommentAll');
+});*/
 Route::get('/articleDetail', function()
 {
 	return View::make('articleDetail');
@@ -64,8 +61,9 @@ Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
 
 Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
-
-Route::post('articleComments', 'UserController@reportUser');
+Route::get('allUserComment/{id}','UserController@getComment');
+Route::post('/home',['as' => 'home','uses' => 'UserController@reportUser']);
+Route::post('search', 'SearchBarController@search');
 
 App::missing(function($exception)
 {
@@ -74,4 +72,6 @@ App::missing(function($exception)
 
 Route::resource('user', 'UserController');
 Route::resource('articleComment', 'ArticleCommentController');
+Route::resource('userComments', 'UserCommentController');
+
 
