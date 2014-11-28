@@ -55,6 +55,11 @@
                 <a class="btn btn-small btn-info" href="{{ URL::to('user/' . $value->id . '/edit') }}">Edit this User</a>
 
             </td>
+            <td>
+             <?php $data=array('userID'=>Session::get('userID'),'contactID'=>$value->id);
+             echo View::make('Contacts.AddRemoveForm')->with('data',$data);
+            ?>
+           </td>
         </tr>
     @endforeach
     </tbody>

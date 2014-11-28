@@ -1,6 +1,6 @@
 <?php
 
-class ArticleFavorisController extends \BaseController {
+class ContactController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,14 +9,15 @@ class ArticleFavorisController extends \BaseController {
 	 */
 	public function index()
 	{
-		$articles = Favorite::findArticle(Auth::id());
-		return View::make('articleDetail.index')->with('articles',$articles);
+		$users = Contact::findUserContacts(Auth::id());
+		    return View::make('subview/usersView')
+            ->with('users', $users);
 	}
-  	public function listFavorites($id){
-      $user = User::find($id);
-      $articles = $user->getFavoriteArticles();
-		  return View::make('articleDetail.index')->with('articles',$articles);
-    }
+  public function listContacts($id){
+    $users = Contact::findUserContacts($id);
+    return View::make('subview/usersView')
+            ->with('users', $users);
+  }
 
 
 	/**
@@ -37,29 +38,29 @@ class ArticleFavorisController extends \BaseController {
 	 */
 	public function store()
 	{
-		        $rules = array(
+				        $rules = array(
             'userID'       => 'required',
-            'articleID'      => 'required',
+            'contactID'      => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('articleDetail/'.Input::get('articleID'))
+            return Redirect::to('user/'.Input::get('contactID'))
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
     
             // store
-          if(!Favorite::ifExist(Input::get('userID'),Input::get('articleID'))){
-            $favoris = new Favorite;
-            $favoris->user_ID=Input::get('userID');
-            $favoris->articles_ID=Input::get('articleID');
-            $favoris->save();
+          if(!Contact::ifExist(Input::get('userID'),Input::get('contactID'))){
+            $contact = new Contact;
+            $contact->user_ID=Input::get('userID');
+            $contact->contact_ID=Input::get('contactID');
+            $contact->save();
           }
 
             // redirect
-            return Redirect::to('articleDetail/'.Input::get('articleID'));
+            return Redirect::to('user/'.Input::get('contactID'));
        }
 	}
 
@@ -72,10 +73,10 @@ class ArticleFavorisController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$favorite = Favorite::find($id);
+				$contact = Contact::find($id);
         // show the view and pass the article ID
-        return View::make('articleDetail.show')
-            ->with('article', $favorite->article_ID);
+        return View::make('profil.userProfilPresentation')
+            ->with('user', $contact->contact_ID);
 	}
 
 
@@ -87,7 +88,7 @@ class ArticleFavorisController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//empty, it's pointless to modify a favorite.
+		//
 	}
 
 
@@ -111,9 +112,9 @@ class ArticleFavorisController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$favorite = Favorite::find($id);
-    $favorite->delete();
-    return Redirect::to('articleDetail');
+		$contact = Contact::find($id);
+    $contact->delete();
+    return Redirect::to('user');
 	}
 
 

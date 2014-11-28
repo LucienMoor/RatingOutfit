@@ -1,5 +1,4 @@
 <!doctype html>
-{{Session::put('userID', 1)}}
 <html>
     <body>
       <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
@@ -24,7 +23,7 @@
           
           <td>{{HTML::image("pictures/article/$value->picture")}}</td>
           <td> {{ $value->style->style }}</td>
-          <td>{{ $value->gender->gender }}</td>
+          <td>{{ $value->gender() }}</td>
           <td>
           {{ Form::open(array('url' => 'articleDetail/' . $value->id, 'class' => 'pull-right')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
@@ -32,7 +31,7 @@
             {{ Form::close() }}
           </td>
           <td>
-            <?php $data=array('userID'=>Session::get('userID'),'articleID'=>$value->id);
+            <?php $data=array('userID'=>Auth::id(),'articleID'=>$value->id);
              echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
             ?>
 

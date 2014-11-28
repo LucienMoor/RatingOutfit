@@ -55,7 +55,7 @@ class articleDetailController extends \BaseController {
             $article->title       = Input::get('title');
             $article->picture      = $_FILES['picture']['name'];
             $article->description = Input::get('description');
-            $article->user_ID = Session::get('userID');
+            $article->user_ID = Auth::id();
             $article->point = 0;
             $article->nbVote = 0;
             $article->gender_ID=Input::get('gender');
@@ -145,7 +145,7 @@ class articleDetailController extends \BaseController {
             $article->picture      = $_FILES['picture']['name'];
           }
             $article->description = Input::get('description');
-            $article->user_ID = Session::get('userID');
+            $article->user_ID = Auth::id();
             $article->gender_ID=Input::get('gender');
             $article->style_ID=Input::get('style');
             $article->save();

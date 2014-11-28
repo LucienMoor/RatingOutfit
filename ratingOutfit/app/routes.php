@@ -44,6 +44,7 @@ Route::get('/articleGallery', function()
 {
 	return View::make('articleGallery');
 });
+Route::resource('contact','ContactController');
 Route::resource('articleFavorite', 'ArticleFavorisController');
 //root for Article
 Route::resource('articleDetail', 'articleDetailController');
@@ -55,6 +56,7 @@ Route::get('/pictures/article/{pictureName}', function($picture)
 	$filepath = '/home/action/workspace/ratingOutfit/pictures/article/' . $picture;
 	return HTML::image($filepath);
 });
+Route::get('articleList/{id}','ArticleFavorisController@listFavorites');
 
 Route::post('upVote','ArticleVoteController@upVote');
 

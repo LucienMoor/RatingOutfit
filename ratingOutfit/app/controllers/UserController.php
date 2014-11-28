@@ -64,7 +64,7 @@ class UserController extends \BaseController {
       $user->country = Input::get('country');
       $user->presentation = Input::get('description');
       
-       if($_FILES['pictup']['error'] == 0){
+       if($_FILES['picture']['error'] == 0){
           //Récupération des informations sur le fichier
           $infosfichier = pathinfo($_FILES['picture']['name']);
           $extension_upload = $infosfichier['extension'];

@@ -17,15 +17,21 @@
           <strong>nombre de vote:</strong> {{ $article->nbVotes() }}<br>
           <strong>nombre de point:</strong> {{ $article->point }}<br>
           <strong>style:</strong> {{ $article->style->style }}<br>
-          <strong>gender:</strong> {{ $article->gender->gender }}<br>
+          <strong>gender:</strong> {{ $article->gender() }}<br>
           {{Form::open(array('action' => 'ArticleVoteController@upVote','method' => 'post'))}}
             {{Form::hidden('articleID', $article->id)}}
-            {{Form::hidden('userID', Session::get('userID'))}}
+            {{Form::hidden('userID', Auth::id())}}
           {{Form::text('point','5')}}
             {{ Form::submit('upvote', array('class' => 'btn btn-primary')) }}
           {{ Form::close() }}
-             <?php $data=array('userID'=>Session::get('userID'),'articleID'=>$article->id);
+             <?php $data=array('userID'=>Auth::id(),'articleID'=>$article->id);
              echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
+
+             
+             /*echo "test de la folie";
+             $request = Request::create('/articleList/'.Auth::id(), 'GET', array());
+             $response = Route::dispatch($request);
+             echo $response->getContent(); //add a popular article to our list*/
             ?>
           
         </p>
