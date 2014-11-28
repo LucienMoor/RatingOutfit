@@ -11,8 +11,8 @@
    
    {{ HTML::image("pictures/user/$user->picture") }}
     <button type="button">Love</button>
-    <h1>{{$user->pseudo}}</h1>
-    <h2>{{$user->presentation}}</h2> 
+    <h1>{{{$user->pseudo}}}</h1>
+    <h2>{{{$user->presentation}}}</h2>
   </div>  
 </body>
 </html>

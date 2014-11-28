@@ -9,7 +9,7 @@ class HomePageController extends \BaseController {
     if($nbArticles>0)
     { 
       //Select a random article
-      $randomArticleId = DB::select('SELECT id FROM Articles ORDER BY RAND() LIMIT 1')[0]->id;
+      $randomArticleId = Article::getRandomArticleId();
      
 			$request = Request::create('/articleDetail/'.$randomArticleId, 'GET', array());
 		  $response = Route::dispatch($request);
@@ -18,9 +18,9 @@ class HomePageController extends \BaseController {
       
       //Select the most popular articles
       $popularArticlesViews = array();
-      $popularArticlesIds = DB::select('SELECT id FROM Articles ORDER BY point DESC LIMIT 10');
-      
-      foreach( $popularArticlesIds as $popularArticleId)
+      $popularArticlesIds = Article::getPopularArticlesIds(10);
+   
+     foreach( $popularArticlesIds as $popularArticleId)
        {
         
       $request = Request::create('/articleDetail/'.$popularArticleId->id, 'GET', array());
@@ -38,8 +38,4 @@ class HomePageController extends \BaseController {
    return View::make('homepage');
   }
   
-  public function getPopularArticle()
-    {
-       return "popular article";
-    }
 }

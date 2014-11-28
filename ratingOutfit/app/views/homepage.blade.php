@@ -14,7 +14,7 @@
   </div>   
   
   <div class="randomArticles">
-    {{ $randomArticleView or 'Default' }}
+    {{ $randomArticleView or 'No article' }}
   </div>
   
   <div class="popularArticles">

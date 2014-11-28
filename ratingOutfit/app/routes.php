@@ -60,11 +60,6 @@ Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
     return View::make('subview/loginForm');
 }));
 
-Route::get('zone_reservee', array('before' => 'auth', function()
-{
-    echo 'Vous avez bien été identifié '.Auth::user()->pseudo;
-}));
-
 Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
 
