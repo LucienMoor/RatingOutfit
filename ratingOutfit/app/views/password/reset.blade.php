@@ -1,5 +1,5 @@
 @if (Session::has('error'))
-           {{ Session::get('error') }}         
+           {{ Session::get('error') }}      
 @endif
 
 {{ Form::open(array('action' => 'RemindersController@postReset'))}}

@@ -35,9 +35,9 @@
     <tbody>
     @foreach($users as $key => $value)
         <tr>
-            <td>{{ $value->id }}</td>
-            <td>{{ $value->pseudo }}</td>
-            <td>{{ $value->email }}</td>
+            <td>{{{ $value->id }}}</td>
+            <td>{{{ $value->pseudo }}}</td>
+            <td>{{{ $value->email }}}</td>
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>

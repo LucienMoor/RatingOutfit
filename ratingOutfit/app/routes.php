@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('homepage');
-});
+Route::get('/', 'HomePageController@getHomePage');
 
 Route::get('/userProfil', function()
 {
@@ -63,11 +60,6 @@ Route::post('upVote','ArticleVoteController@upVote');
 Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
 {
     return View::make('subview/loginForm');
-}));
-
-Route::get('zone_reservee', array('before' => 'auth', function()
-{
-    echo 'Vous avez bien été identifié '.Auth::user()->pseudo;
 }));
 
 Route::controller('auth', 'LoginController');

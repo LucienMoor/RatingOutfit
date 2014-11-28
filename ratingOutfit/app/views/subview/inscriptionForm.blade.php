@@ -10,7 +10,7 @@
   
        
      <div>
-      {{ $errors->first('pseudo', '<p>:message</p>') }}
+     {{ $errors->first('pseudo', '<p>:message</p>') }}
       <strong>{{ Form::label('pseudo', 'Pseudo* : ')  }}</strong>
       {{ Form::text('pseudo') }}
      </div>
