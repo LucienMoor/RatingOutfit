@@ -26,7 +26,7 @@ Route::get('/favoriteUser', function()
 {
 	return View::make('subview/favoriteUser');
 });
-/*Route::get('/userComment/', function()
+/*Route::get('/userComment', function()
 {
 	return View::make('subview/userCommentAll');
 });*/

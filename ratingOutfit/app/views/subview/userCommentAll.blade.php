@@ -10,7 +10,9 @@
    @foreach($comments as $comment)
     {{$comment}}
    @endforeach
-  </div>  
-    @include('subview/userCommentForm')
+  </div> 
+  <?php
+     echo View::make('subview/userCommentForm')->with('data', $user->id);
+    ?>
 </body>
 </html>

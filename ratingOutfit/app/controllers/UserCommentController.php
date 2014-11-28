@@ -34,23 +34,24 @@ class UserCommentController extends \BaseController {
 	public function store()
 	{
 		$rules = array(
-      'comment'      =>  'required'
+      'comment'      =>  'required',
+      'userID'       =>  'required'
     ); 
     $validator=Validator::make(Input::all(),$rules);
     
     if($validator->fails()){
-      return Redirect::to('userComment/create');
+      return Redirect::to('allUserComment/'.Input::get('userID'));
     }
     else {
             // store
              $userComment = new UserComment;
-             $userComment->userEditor_ID      = Auth::id(); 
-             $userComment->userDestinated_ID   = 2;//User::find(1)->id; TODO user's id not hard coding
+             $userComment->userEditor_ID = Auth::id();
+             $userComment->userDestinated_ID   = Input::get('userID');//User::find(1)->id; TODO user's id not hard coding
              $userComment->comment      = Input::get('comment');
              $userComment->save();
        // redirect
             Session::flash('message', 'Successfully created a comment!');
-            return Redirect::to('userComment');
+            return Redirect::to('allUserComment/'.Input::get('userID'));
         }
 	}
 
