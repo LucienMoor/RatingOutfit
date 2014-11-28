@@ -46,7 +46,7 @@ class ArticleCommentController extends \BaseController {
     else {
             // store
              $articleComment = new ArticleComment;
-             $articleComment->user_ID      = Session::get('user_ID');
+             $articleComment->user_ID      = Auth::id();
              $articleComment->article_ID   = 1;//Article::find(1)->id;
              $articleComment->comment      = Input::get('comment');
              $articleComment->save();

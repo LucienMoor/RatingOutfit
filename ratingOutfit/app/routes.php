@@ -29,10 +29,10 @@ Route::get('/favoriteUser', function()
 {
 	return View::make('subview/favoriteUser');
 });
-Route::get('/comments', function()
+/*Route::get('/userComment/', function()
 {
-	return View::make('subview/userComment');
-});
+	return View::make('subview/userCommentAll');
+});*/
 Route::get('/articleDetail', function()
 {
 	return View::make('articleDetail');
@@ -67,7 +67,7 @@ Route::get('zone_reservee', array('before' => 'auth', function()
 
 Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
-
+Route::get('allUserComment/{id}','UserController@getComment');
 Route::post('/home',['as' => 'home','uses' => 'UserController@reportUser']);
 Route::post('search', 'SearchBarController@search');
 
@@ -78,5 +78,6 @@ App::missing(function($exception)
 
 Route::resource('user', 'UserController');
 Route::resource('articleComment', 'ArticleCommentController');
-Route::resource('userComment', 'UserCommentController');
+Route::resource('userComments', 'UserCommentController');
+
 

@@ -82,5 +82,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return $this->email;
     }
+  
+   public function comment()
+    {
+     
+        $comment = UserComment::where('userDestinated_ID','=',$this->id)->get();
 
+        return $comment;
+    }
+  
 }

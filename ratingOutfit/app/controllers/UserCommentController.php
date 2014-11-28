@@ -33,7 +33,6 @@ class UserCommentController extends \BaseController {
 	 */
 	public function store()
 	{
-		Session::put('user_ID',2);
 		$rules = array(
       'comment'      =>  'required'
     ); 
@@ -45,7 +44,7 @@ class UserCommentController extends \BaseController {
     else {
             // store
              $userComment = new UserComment;
-             $userComment->userEditor_ID      = Session::get('user_ID');
+             $userComment->userEditor_ID      = Auth::id(); 
              $userComment->userDestinated_ID   = 2;//User::find(1)->id; TODO user's id not hard coding
              $userComment->comment      = Input::get('comment');
              $userComment->save();

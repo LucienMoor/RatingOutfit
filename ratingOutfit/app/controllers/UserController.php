@@ -101,6 +101,24 @@ class UserController extends \BaseController {
 	}
 
 
+  public function getComment($id)
+  {
+   
+      $user = User::find($id);
+      $comments=$user->comment();
+    //echo var_dump($comments);
+      $userComment=array();
+      foreach( $comments as $comment)
+       {
+        $request = Request::create('/userComments/'.$comment->id,'GET', array());
+        $response = Route::dispatch($request);
+        $userComment[] = $response->getContent();
+        
+      }
+      return View::make('subview/userCommentAll', array('comments'=>$userComment, 'user'=>$user));
+  }
+  
+
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -200,5 +218,5 @@ class UserController extends \BaseController {
       $user->save(); 
       return View::make('hello');  
   }
-
+  
 }

@@ -5,9 +5,9 @@
 	<title>Commnents</title>
 </head>
 <body>
-  {{ Form::open(array('url' => 'search', 'method' => 'get')) }}  
+  {{Form::open(array('url' => URL::action('SearchBarController@search'), 'id' => 'reportUser','method' => 'post'))}}  
   <div id="searchInput">
-    {{ Form::text('Search...') }}
+    {{ Form::text('keyWord','Search...') }}
     {{ Form::submit('Search') }}
   </div>
   {{ Form::close() }}
