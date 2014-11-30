@@ -14,7 +14,8 @@ class ContactController extends \BaseController {
             ->with('users', $users);
 	}
   public function listContacts($id){
-    $users = Contact::findUserContacts($id);
+    $user=User::find($id);
+    $users = $user->getContacts();
     return View::make('subview/usersView')
             ->with('users', $users);
   }
@@ -46,6 +47,7 @@ class ContactController extends \BaseController {
 
         // process the login
         if ($validator->fails()) {
+          return Input::get('userID'). " - ".Input::get('contactID');
             return Redirect::to('user/'.Input::get('contactID'))
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));

@@ -56,7 +56,7 @@
 
             </td>
             <td>
-             <?php $data=array('userID'=>Session::get('userID'),'contactID'=>$value->id);
+             <?php $data=array('userID'=>Auth::id(),'contactID'=>$value->id);
              echo View::make('Contacts.AddRemoveForm')->with('data',$data);
             ?>
            </td>

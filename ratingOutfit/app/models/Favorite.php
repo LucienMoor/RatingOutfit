@@ -25,5 +25,4 @@ class Favorite extends Eloquent {
   }
   return $articles;
 }
-
 }

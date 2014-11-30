@@ -28,7 +28,11 @@
              echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
 
              
-             /*echo "test de la folie";
+             /*//echo Request::create('/articleList/'.Auth::id(), 'GET', array());
+             $request = Request::create('/contactList/'.Auth::id(), 'GET', array());
+             $response = Route::dispatch($request);
+             echo $response->getContent();
+             
              $request = Request::create('/articleList/'.Auth::id(), 'GET', array());
              $response = Route::dispatch($request);
              echo $response->getContent(); //add a popular article to our list*/
