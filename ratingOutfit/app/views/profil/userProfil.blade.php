@@ -12,8 +12,7 @@
     
   
 </head>
-<body>  
-  @include('subview/header')
+<body>
   <nav class="navbar">
     <div class="navbar-inner">
       <ul class="nav">

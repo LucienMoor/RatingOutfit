@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                {{ HTML::style('assets/css/bootstrap.min.css') }}
+                {{ HTML::style('assets/css/bootstrap-responsive.min.css') }}
+                {{ HTML::style('assets/css/main.css') }}
+                {{ HTML::style('http://fonts.googleapis.com/css?family=Imprima') }}
 </head>
 <body>
   {{Session::put('user_ID',2)}}
@@ -11,7 +16,7 @@
   
   @if (Auth::check())
   <div ud="userInfo">
-  <a href="{{ URL::to('user/' . Session::get('user_ID')) }}">Me</a>
+  <a href="{{ URL::to('user/' . Auth::id()) }}">Me</a>
   </div>
   @else
   <div ud="inscription">

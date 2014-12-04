@@ -7,7 +7,6 @@
 </head>
 <body>
 <div class="container">
-
 <h1>Showing {{ $article->title }}</h1>
 
     <div class="jumbotron text-center">

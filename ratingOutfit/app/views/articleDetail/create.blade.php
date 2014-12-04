@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-{{Session::put('userID', 1)}}
 <?php
-  
   $genderArray=Gender::getGenderArray();
   $styleArray=Style::getStyleArray();
 ?>
@@ -10,6 +8,7 @@
     <title>Create article</title>
 </head>
 <body>
+@include('subview/header')
 <div class="container">
 
 <h1>Create article</h1>

@@ -16,8 +16,8 @@ class ContactController extends \BaseController {
   public function listContacts($id){
     $user=User::find($id);
     $users = $user->getContacts();
-    return View::make('subview/usersView')
-            ->with('users', $users);
+    return View::make('subview/contactList')
+            ->with('users', $users)->with('user',$user);
   }
 
 
