@@ -43,7 +43,6 @@ Route::resource('articleFavorite', 'ArticleFavorisController');
 //root for Article
 Route::resource('articleDetail', 'articleDetailController');
 
-
 Route::get('/pictures/article/{pictureName}', function($picture)
 {
   

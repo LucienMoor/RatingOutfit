@@ -2,6 +2,13 @@
 
 class UserController extends \BaseController {
 
+  
+  public function __construct()
+    {
+        // Perform CSRF check on all post/put/patch/delete requests
+        $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    }
+  
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -127,14 +134,22 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//TODO vérifier que l'utilisateur à le droit de modifier
-    
+		//check if the user is logged
+    if (Auth::check())
+    {
+      //check if the user who edit the profil is the owner
+      if(Auth::id() == $id)
+        {
     // get the user
    $user = User::find($id);
 
     // show the edit form and pass the user
     return View::make('subview/editUserForm')
       ->with('user', $user);
+    }
+    else return "you can't edit a other account than your own";
+    }  
+    else return "you must be logged for this action";
 	}
 
 
@@ -201,6 +216,12 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+    //check if the user is logged
+    if (Auth::check())
+    {
+      //check if the user who delete the profil is the owner
+      if(Auth::id() == $id)
+        {
 		    // delete
         $user = User::find($id);
         $user->delete();
@@ -208,6 +229,10 @@ class UserController extends \BaseController {
         // redirect
         Session::flash('message', 'User successfully deleted!');
         return Redirect::to('user');
+         }
+    else return "you can't delete a other account than your own";
+    }  
+    else return "you must be logged for this action";
 	}
   
   public function reportUser()
