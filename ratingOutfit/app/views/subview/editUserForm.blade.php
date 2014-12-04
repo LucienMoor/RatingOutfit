@@ -4,6 +4,7 @@
     <title>Edit User</title>
 </head>
 <body>
+@include('subview/header')
 <div class="container">
 
 <h1>Edit {{{ $user->pseudo }}}</h1>
