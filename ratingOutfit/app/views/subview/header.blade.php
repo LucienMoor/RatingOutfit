@@ -11,7 +11,7 @@
   
   @if (Auth::check())
   <div ud="userInfo">
-  <a href="{{ URL::to('user/' . Session::get('user_ID')) }}">Me</a>
+  <a href="{{ URL::to('user/' . Auth::id()) }}">Me</a>
   </div>
   @else
   <div ud="inscription">

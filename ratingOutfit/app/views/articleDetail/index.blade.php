@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
     <body>
+     @include('profil/userProfil')
       <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
-      <table>
+      <table class="table table-striped table-bordered">
       <tr>
         <th>title</th>
         <th>description</th>

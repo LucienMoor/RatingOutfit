@@ -15,7 +15,7 @@ class ArticleFavorisController extends \BaseController {
   	public function listFavorites($id){
       $user = User::find($id);
       $articles = $user->getFavoriteArticles();
-		  return View::make('articleDetail.index')->with('articles',$articles);
+		  return View::make('articleDetail.index')->with('articles',$articles)->with('user',$user);
     }
 
 
