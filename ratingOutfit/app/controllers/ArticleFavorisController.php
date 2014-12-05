@@ -1,6 +1,12 @@
 <?php
 
 class ArticleFavorisController extends \BaseController {
+  
+  public function __construct()
+    {
+        // Perform CSRF check on all post/put/patch/delete requests
+        $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -12,10 +18,13 @@ class ArticleFavorisController extends \BaseController {
 		$articles = Favorite::findArticle(Auth::id());
 		return View::make('articleDetail.index')->with('articles',$articles);
 	}
-  	public function listFavorites($id){
+  	public function listFavorites($id)
+    {
       $user = User::find($id);
       $articles = $user->getFavoriteArticles();
-		  return View::make('articleDetail.index')->with('articles',$articles)->with('user',$user);
+		  $view =  View::make('articleDetail.index')->with('articles',$articles);
+      $header = View::make('profil/userProfil')->with('user',$user);
+      return View::make('contentView')->withView($view)->with('subHead',$header);
     }
 
 

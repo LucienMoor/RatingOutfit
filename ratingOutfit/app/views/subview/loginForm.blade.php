@@ -5,20 +5,20 @@
 @stop
 
 @section('body')
+@include('subview/homeNavBar')
 <div class="container">
 
 <h1>Login</h1>
-@if (Session::has('message'))
-    <div class="alert alert-info">{{ Session::get('message') }}</div>
-@endif
+
     {{ Form::open(array('url' => '/auth/login'))}}
    
     <div>
-        {{ $errors->first('pseudo', '<p>:message</p>') }}
+        {{ $errors->first('pseudo', '<div class="alert alert-danger" role="alert">:message</div>') }}
         <strong> {{ Form::label('pseudo', 'Pseudo : ') }} </strong>
         {{ Form::text('pseudo') }}
       
-        {{ $errors->first('password', '<p>:message</p>') }}
+       {{ $errors->first('password', '<div class="alert alert-danger" role="alert">:message</div>') }}
+    
          <strong>{{ Form::label('password', 'Password : ') }} </strong>
         {{ Form::password('password') }}
     </div>

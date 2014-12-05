@@ -20,10 +20,11 @@ class UserController extends \BaseController {
 		$users = User::all();
     
      // load the view and pass the users
-    return View::make('subview/usersView')
+    $view = View::make('subview/usersView')
             ->with('users', $users);
+    $subHead = View::make('subview/homeNavBar');
+    return View::make('contentView')->withView($view)->withHeader('<title>Users</title>')->with('subHead',$subHead);
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -56,7 +57,6 @@ class UserController extends \BaseController {
     }
     else
     {
-      echo 'Inscription success !!! Congratulations '.Input::get('pseudo');
       $user = new User;
 
       $user->pseudo = Input::get('pseudo');
@@ -85,7 +85,7 @@ class UserController extends \BaseController {
           }
        }
       $user->save();
-      Session::flash('message', 'User successfully created !');
+      Session::flash('success_message', 'You have been successfully registered !');
       return Redirect::to('user');
     }
 	}
@@ -103,10 +103,8 @@ class UserController extends \BaseController {
      $user = User::find($id);
      $articles=$user->getArticles();
      
-     $view=View::make('profil/userProfilPresentation')->with('user', $user);
-    $view .= View::make('articleDetail.index')->with('articles',$articles);
     // show the view and pass the user to it
-    return $view;
+    return View::make('profil/userProfilPresentation')->with('user', $user)->with('articles',$articles);
 	}
 
   public function getComment($id)
@@ -228,12 +226,20 @@ class UserController extends \BaseController {
         $user->delete();
 
         // redirect
-        Session::flash('message', 'User successfully deleted!');
+        Session::flash('success_message', 'User successfully deleted!');
         return Redirect::to('user');
          }
-    else return "you can't delete a other account than your own";
+    else
+    {
+       Session::flash('error_message', "You can't delete a other account than your own !");
+       return Redirect::to('user');
+    }
     }  
-    else return "you must be logged for this action";
+    else
+    {
+       Session::flash('error_message', "You must be logged for this action !");
+       return Redirect::to('user');
+    }
 	}
   
   public function reportUser()
@@ -246,7 +252,11 @@ class UserController extends \BaseController {
       $user->save(); 
       return Redirect::to('user/');  
     }  
-    else return "you must be logged for this action";
+    else
+    {
+       Session::flash('error_message', "You must be logged for this action !");
+       return Redirect::to('user');
+    }
   }
   
 }

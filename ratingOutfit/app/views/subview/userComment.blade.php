@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Laravel PHP Framework</title>
-  {{ HTML::style('css/userprofil.css') }}
-</head>
-<body>
+
   <div class="bodycomment">
     {{ Form::open(array('url' => URL::action('UserController@reportUser'), 'id' => 'reportUser','method' => 'post')) }}
     <tr>
@@ -21,5 +14,3 @@
     <br />
     <br />
   </div> 
-</body>
-</html>

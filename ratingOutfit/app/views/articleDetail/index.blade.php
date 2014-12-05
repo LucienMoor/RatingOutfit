@@ -1,10 +1,4 @@
-@extends('viewTemplate')
 
-@section('head')
-  <title>Article</title>
-@stop
-
-@section('body')
     <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
       <table class="table table-striped table-bordered">
       <tr>
@@ -49,4 +43,3 @@
       </tr>
          @endforeach
       </table>
-@stop

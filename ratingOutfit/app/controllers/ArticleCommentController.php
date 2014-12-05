@@ -2,6 +2,12 @@
 
 class ArticleCommentController extends \BaseController {
 
+  
+  public function __construct()
+    {
+        // Perform CSRF check on all post/put/patch/delete requests
+        $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -51,7 +57,7 @@ class ArticleCommentController extends \BaseController {
              $articleComment->comment      = Input::get('comment');
              $articleComment->save();
        // redirect
-            Session::flash('message', 'Successfully created a comment!');
+            Session::flash('success_message', 'Successfully created a comment!');
             return Redirect::to('articleComment');
         }
     ;}

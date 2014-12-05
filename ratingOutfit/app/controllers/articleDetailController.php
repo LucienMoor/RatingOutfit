@@ -2,6 +2,13 @@
 
 class articleDetailController extends \BaseController {
 
+  
+  public function __construct()
+    {
+        // Perform CSRF check on all post/put/patch/delete requests
+        $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    }
+  
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -10,7 +17,11 @@ class articleDetailController extends \BaseController {
 	public function index()
 	{
     $articles=Article::all();
-		return View::make('articleDetail.index')->with('articles',$articles);
+    
+		$view = View::make('articleDetail.index')->with('articles',$articles);
+    
+    $subHead = View::make('subview/homeNavBar');
+    return View::make('contentView')->withView($view)->withHeader('<title>Articles</title>')->with('subHead',$subHead);
 	}
 
 
@@ -94,9 +105,8 @@ class articleDetailController extends \BaseController {
         // show the view and pass the nerd to it
         $view = View::make('articleDetail.show')
             ->with('article', $article);
-    
-    return View::make('contentView')->withView($view);
-    
+     $subHead = View::make('subview/homeNavBar');
+    return View::make('contentView')->withView($view)->withHeader('<title>'.$article->title.'</title>')->with('subHead',$subHead);;
 	}
   
   /**

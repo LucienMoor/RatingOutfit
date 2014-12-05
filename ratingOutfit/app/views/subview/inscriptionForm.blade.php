@@ -5,33 +5,37 @@
 @stop
 
 @section('body')
+    @include('subview/homeNavBar')
+<div class="container">
+    <h1>Inscription</h1>
+
     {{ Form::open(array('url' => 'user', 'method' => 'POST','files'=>true)) }}
   
        
      <div>
-     {{ $errors->first('pseudo', '<p>:message</p>') }}
+     {{ $errors->first('pseudo', '<div class="alert alert-danger" role="alert">:message</div>') }}
       <strong>{{ Form::label('pseudo', 'Pseudo* : ')  }}</strong>
       {{ Form::text('pseudo') }}
      </div>
      <div>
-      {{ $errors->first('password', '<p>:message</p>') }}
+      {{ $errors->first('password', '<div class="alert alert-danger" role="alert">:message</div>') }}
       <strong>{{ Form::label('password', 'Password* : ')  }}</strong>
       {{ Form::password('password') }}
      
-      {{ $errors->first('confirmpassword', '<p>:message</p>') }}
+      {{ $errors->first('confirmpassword', '<div class="alert alert-danger" role="alert">:message</div>') }}
       <strong>{{ Form::label('confirmpassword', 'Confirm the password* : ')  }}</strong>
       {{ Form::password('confirmpassword') }}
       
      </div>
      <div>
-      {{ $errors->first('email', '<p>:message</p>') }}
+      {{ $errors->first('email', '<div class="alert alert-danger" role="alert">:message</div>') }}
      <strong>{{ Form::label('email', 'Email* : ')  }}</strong>
       {{ Form::email('email') }}
      
      <strong>{{ Form::label('country', 'Country : ')  }}</strong>
       {{ Form::text('country') }}
      
-      {{ $errors->first('birthDate', '<p>:message</p>') }}
+      {{ $errors->first('birthDate', '<div class="alert alert-danger" role="alert">:message</div>') }}
       <strong>{{ Form::label('birthDate', 'Birth date : ')  }}</strong>
       {{ Form::input('date', 'birthDate'); }}
      </div>
@@ -46,4 +50,5 @@
     {{ Form::submit('Send !') }}
   
     {{ Form::close() }}
+</div>it 
 @stop
