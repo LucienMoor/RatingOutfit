@@ -124,6 +124,16 @@ class articleDetailController extends \BaseController {
         return View::make('articleDetail.show')
             ->with('article', $article);
 	}
+  
+  public function showPreview($id)
+	{
+       $article = Article::find($id);
+
+        // show the view and pass the nerd to it
+   
+        return View::make('articleDetail.showSmall')
+            ->with('article', $article);
+	}
 
 	/**
 	 * Show the form for editing the specified resource.

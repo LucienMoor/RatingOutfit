@@ -10,10 +10,11 @@
 
 @section('body')
   @include('profil/userProfil')
-  <div class="bodyprofil">
-   
+  <div class="bodyprofil text-center">
    {{ HTML::image("pictures/user/$user->picture") }}
-    <button type="button">Love</button>
+    <?php $data=array('userID'=>Auth::id(),'contactID'=>$user->id);
+             echo View::make('Contacts.AddRemoveForm')->with('data',$data);
+            ?>
     <h1>{{{$user->pseudo}}}</h1>
     <h2>{{{$user->presentation}}}</h2>
   </div> 

@@ -23,7 +23,7 @@ class HomePageController extends \BaseController {
      foreach( $popularArticlesIds as $popularArticleId)
        {
         
-      $request = Request::create('/articleDetail/small/'.$popularArticleId->id, 'GET', array());
+      $request = Request::create('/articleDetail/preview/'.$popularArticleId->id, 'GET', array());
 		  $response = Route::dispatch($request);
 			$popularArticlesView[] = $response->getContent(); //add a popular article to our list
         

@@ -18,7 +18,8 @@ class ArticleVoteController extends \BaseController {
     }
     else
       {
-      return "nice try bro'";
+      Session::flash('error_message', "You already voted for this guy");
+      return Redirect::to('articleDetail/'.Input::get('articleID'));
     }
     }
 }
