@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+@extends('viewTemplate')
 <?php
   $genderArray=Gender::getGenderArray();
   $styleArray=Style::getStyleArray();
 ?>
-<html>
-<head>
-    <title>Create article</title>
-</head>
-<body>
-@include('subview/header')
-<div class="container">
+
+@section('head')
+     <title>Create article</title>
+@stop
+
+@section('body')
+    <div class="container">
 
 <h1>Create article</h1>
 
@@ -45,5 +45,4 @@
 {{ Form::close() }}
 
 </div>
-</body>
-</html>
+@stop

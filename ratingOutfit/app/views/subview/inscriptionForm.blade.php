@@ -1,11 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-  
-</head>
-<body>
+@extends('viewTemplate')
 
+@section('head')
+  <title>Inscription</title>
+@stop
+
+@section('body')
     {{ Form::open(array('url' => 'user', 'method' => 'POST','files'=>true)) }}
   
        
@@ -47,5 +46,4 @@
     {{ Form::submit('Send !') }}
   
     {{ Form::close() }}
-</body>
-</html>
+@stop

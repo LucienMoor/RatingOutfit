@@ -1,15 +1,15 @@
 <!-- app/views/nerds/edit.blade.php -->
+@extends('viewTemplate')
 <?php
   $genderArray=Gender::getGenderArray();
   $styleArray=Style::getStyleArray();
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
+@section('head')
     <title>modify an article</title>
-</head>
-<body>
+@stop
+
+@section('body')
 <div class="container">
 
 <h1>Edit {{ $article->title }}</h1>
@@ -46,5 +46,4 @@
 {{ Form::close() }}
 
 </div>
-</body>
-</html>
+@stop

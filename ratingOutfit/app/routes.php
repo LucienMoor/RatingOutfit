@@ -42,6 +42,7 @@ Route::resource('contact','ContactController');
 Route::resource('articleFavorite', 'ArticleFavorisController');
 //root for Article
 Route::resource('articleDetail', 'articleDetailController');
+Route::get('articleDetail/small/{id}','articleDetailController@showSmall');
 
 Route::get('/pictures/article/{pictureName}', function($picture)
 {

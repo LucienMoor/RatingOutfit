@@ -1,3 +1,10 @@
+@extends('viewTemplate')
+
+@section('head')
+    <title>Password remind</title>
+@stop
+
+@section('body')
 @if (Session::has('error'))
            {{ Session::get('error') }}        
 @endif
@@ -13,4 +20,4 @@
     {{ Form::submit('Send Reminder') }}
 
 {{ Form::close() }}
-
+@stop

@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('viewTemplate')
+
+@section('head')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 {{ HTML::style('assets/css/bootstrap.min.css') }}
                 {{ HTML::style('assets/css/bootstrap-responsive.min.css') }}
                 {{ HTML::style('assets/css/main.css') }}
                 {{ HTML::style('http://fonts.googleapis.com/css?family=Imprima') }}
     <title>Users</title>
-</head>
-<body>
+@stop
+
+@section('body')
 <div class="container">
 
 <nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('user') }}">User Alert</a>
-    </div>
     <ul class="nav navbar-nav">
         <li><a href="{{ URL::to('user') }}">View All Users</a></li>
         <li><a href="{{ URL::to('user/create') }}">Create a User</a>
@@ -71,5 +69,4 @@
 </table>
 
 </div>
-</body>
-</html>
+@stop

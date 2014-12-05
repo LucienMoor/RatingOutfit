@@ -103,17 +103,15 @@ class UserController extends \BaseController {
      $user = User::find($id);
 
     // show the view and pass the user to it
-    //TODO montrer le profil associé
     return View::make('profil/userProfilPresentation')->with('user', $user);
 	}
-
 
   public function getComment($id)
   {
    
       $user = User::find($id);
       $comments=$user->comment();
-    //echo var_dump($comments);
+
       $userComment=array();
       foreach( $comments as $comment)
        {
@@ -237,11 +235,15 @@ class UserController extends \BaseController {
   
   public function reportUser()
   {
+    if (Auth::check())
+    {
       $userID=Input::get('userID');
       $user=User::find($userID);
       $user->nbReport=$user->nbReport+1;
       $user->save(); 
-      return View::make('hello');  
+      return View::make('hello');
+    }  
+    else return "you must be logged for this action";
   }
   
 }

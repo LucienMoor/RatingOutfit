@@ -1,13 +1,7 @@
 <!-- app/views/nerds/show.blade.php -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>specific article</title>
-</head>
-<body>
-<div class="container">
-<h1>Showing {{ $article->title }}</h1>
+    <div class="container">
+<h1>Showing {{{ $article->title }}}</h1>
 
     <div class="jumbotron text-center">
         <p>
@@ -41,5 +35,3 @@
     </div>
 
 </div>
-</body>
-</html>

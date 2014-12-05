@@ -1,3 +1,11 @@
+@extends('viewTemplate')
+
+@section('head')
+    <title>Password reset</title>
+@stop
+
+@section('body')
+
 @if (Session::has('error'))
            {{ Session::get('error') }}      
 @endif
@@ -11,9 +19,11 @@
     <strong>{{ Form::label('password', 'Password : ') }} </strong>
     {{ Form::password('password') }}
 
-    <strong>{{ Form::label('password_confirmation', 'Confirm password : ') }} </strong>
+    <strong>{{ Form::label('password_confirmation', 'Confirm password : ') }}</strong>
     {{ Form::password('password_confirmation') }}
 
     {{ Form::submit('Change Password') }}
 
 {{ Form::close() }}
+
+@stop

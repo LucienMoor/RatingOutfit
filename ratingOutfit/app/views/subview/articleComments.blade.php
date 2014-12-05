@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Laravel PHP Framework</title>
-</head>
-<body>
+@extends('viewTemplate')
+
+@section('head')
+	<title>Comments</title>
+@stop
+
+@section('body')
   <div class="showcommentarticle">
    @foreach(ArticleComment::all() as $value)
     {{ Form::open(array('url' => URL::action('UserController@reportUser'), 'id' => 'reportUser','method' => 'post')) }}
@@ -23,5 +23,5 @@
     @endforeach
   </div>
   @include('subview/articleCommentForm')
-</body>
+@stop
 </html>

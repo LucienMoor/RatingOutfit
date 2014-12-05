@@ -11,7 +11,7 @@
 <body>
   {{Session::put('user_ID',2)}}
   <img src="" alt="MyLogo"/>
-  <div id="logo"><h1>Rating Outfit</h1></div>
+  <div id="logo"><a href="/"><h1>Rating Outfit</h1></a></div>
   <div id="searchBox">@include('subview/searchBar')</div>
   
   @if (Auth::check())

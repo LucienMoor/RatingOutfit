@@ -1,12 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
+@extends('viewTemplate')
+
+@section('head')
+    
 	<meta charset="UTF-8">
 	<title>Laravel PHP Framework</title>
   {{ HTML::style('css/userprofil.css') }}
-</head>
-<body>
-  @include('subview/header')
+
+@stop
+
+@section('body')
   @include('profil/userProfil')
   <div class="bodyprofil">
    
@@ -15,5 +17,4 @@
     <h1>{{{$user->pseudo}}}</h1>
     <h2>{{{$user->presentation}}}</h2>
   </div>  
-</body>
-</html>
+@stop

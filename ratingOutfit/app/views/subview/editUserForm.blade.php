@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('viewTemplate')
+
+@section('head')
     <title>Edit User</title>
-</head>
-<body>
-@include('subview/header')
+@stop
+
+@section('body')
 <div class="container">
 
 <h1>Edit {{{ $user->pseudo }}}</h1>
@@ -47,6 +47,4 @@
 
 {{ Form::close() }}
 
-</div>
-</body>
-</html>
+@stop
