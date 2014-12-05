@@ -10,7 +10,8 @@
 
 @section('body')
    @include('subview/homeNavBar')
-  <div class="randomArticles">
+  
+<div class="randomArticles">
     {{ $randomArticleView or 'No article' }}
   </div>
   

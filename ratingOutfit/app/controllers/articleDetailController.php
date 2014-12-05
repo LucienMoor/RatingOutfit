@@ -106,7 +106,7 @@ class articleDetailController extends \BaseController {
         $view = View::make('articleDetail.show')
             ->with('article', $article);
      $subHead = View::make('subview/homeNavBar');
-    return View::make('contentView')->withView($view)->withHeader('<title>'.$article->title.'</title>')->with('subHead',$subHead);;
+    return View::make('contentView')->withView($view)->withHeader('<title>'.$article->title.'</title>')->with('subHead',$subHead);
 	}
   
   /**
