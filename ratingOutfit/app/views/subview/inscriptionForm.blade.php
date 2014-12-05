@@ -50,5 +50,5 @@
     {{ Form::submit('Send !') }}
   
     {{ Form::close() }}
-</div>
+</div>it 
 @stop

@@ -16,5 +16,7 @@
     <button type="button">Love</button>
     <h1>{{{$user->pseudo}}}</h1>
     <h2>{{{$user->presentation}}}</h2>
-  </div>  
+  </div> 
+
+  @include('articleDetail.index')
 @stop

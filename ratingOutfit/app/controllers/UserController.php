@@ -20,9 +20,10 @@ class UserController extends \BaseController {
 		$users = User::all();
     
      // load the view and pass the users
-     $view = View::make('subview/usersView')
+    $view = View::make('subview/usersView')
             ->with('users', $users);
-    return View::make('contentView')->withView($view)->withHeader('<title>Users</title>');
+    $subHead = View::make('subview/homeNavBar');
+    return View::make('contentView')->withView($view)->withHeader('<title>Users</title>')->with('subHead',$subHead);
 	}
 
 	/**
@@ -100,9 +101,10 @@ class UserController extends \BaseController {
 	{
 		 // get the user
      $user = User::find($id);
-
+     $articles=$user->getArticles();
+     
     // show the view and pass the user to it
-    return View::make('profil/userProfilPresentation')->with('user', $user);
+    return View::make('profil/userProfilPresentation')->with('user', $user)->with('articles',$articles);
 	}
 
   public function getComment($id)
@@ -248,7 +250,7 @@ class UserController extends \BaseController {
       $user=User::find($userID);
       $user->nbReport=$user->nbReport+1;
       $user->save(); 
-      return View::make('hello');
+      return Redirect::to('user/');  
     }  
     else
     {

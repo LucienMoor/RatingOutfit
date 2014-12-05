@@ -17,7 +17,11 @@ class articleDetailController extends \BaseController {
 	public function index()
 	{
     $articles=Article::all();
-		return View::make('articleDetail.index')->with('articles',$articles);
+    
+		$view = View::make('articleDetail.index')->with('articles',$articles);
+    
+    $subHead = View::make('subview/homeNavBar');
+    return View::make('contentView')->withView($view)->withHeader('<title>Articles</title>')->with('subHead',$subHead);
 	}
 
 
@@ -101,9 +105,8 @@ class articleDetailController extends \BaseController {
         // show the view and pass the nerd to it
         $view = View::make('articleDetail.show')
             ->with('article', $article);
-    
-    return View::make('contentView')->withView($view);
-    
+     $subHead = View::make('subview/homeNavBar');
+    return View::make('contentView')->withView($view)->withHeader('<title>'.$article->title.'</title>')->with('subHead',$subHead);;
 	}
   
   /**
@@ -130,11 +133,19 @@ class articleDetailController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+    if (Auth::check())
+    {
+      //check if the user who edit the profil is the owner
+      if(Auth::id() == $id)
+        {
 		    $article = Article::find($id);
 
         // show the edit form and pass the nerd
         return View::make('articleDetail.edit')
             ->with('article', $article);
+        }
+    }
+    return Redirect::to('auth/login');
 	}
 
 
@@ -203,11 +214,19 @@ class articleDetailController extends \BaseController {
 	public function destroy($id)
 	{
 		  // delete
+     if (Auth::check())
+    {
+      //check if the user who edit the profil is the owner
+      if(Auth::id() == $id)
+        {
         $article = Article::find($id);
         $article->delete();
 
         // redirect
         return Redirect::to('articleDetail');
+        }
+     }
+    return Redirect::to('auth/login');
 	}
 
 
