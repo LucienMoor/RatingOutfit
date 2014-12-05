@@ -9,4 +9,4 @@
   <div class="container">
       <h1><img src="" class="img-responsive" alt="MyLogo" /></h1>
       <h2>Rating Outfit</h2>
-     
+  </div>
