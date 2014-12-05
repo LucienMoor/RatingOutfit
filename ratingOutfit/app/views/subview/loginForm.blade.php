@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('viewTemplate')
+
+@section('head')
     <title>Login</title>
-</head>
-<body>
+@stop
+
+@section('body')
 <div class="container">
 
 <h1>Login</h1>
@@ -32,5 +33,4 @@
 <a href="{{ URL::to('password/remind') }}">Forgot your password?</a>
 
 </div>
-</body>
-</html>
+@stop

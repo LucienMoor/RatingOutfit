@@ -82,7 +82,7 @@ class articleDetailController extends \BaseController {
 
 
 	/**
-	 * Display the specified resource.
+	 * Display the specified resource alone.
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -92,10 +92,28 @@ class articleDetailController extends \BaseController {
         $article = Article::find($id);
 
         // show the view and pass the nerd to it
+        $view = View::make('articleDetail.show')
+            ->with('article', $article);
+    
+    return View::make('contentView')->withView($view);
+    
+	}
+  
+  /**
+	 * Display the specified resource for display with other.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+  public function showSmall($id)
+	{
+       $article = Article::find($id);
+
+        // show the view and pass the nerd to it
+   
         return View::make('articleDetail.show')
             ->with('article', $article);
 	}
-
 
 	/**
 	 * Show the form for editing the specified resource.

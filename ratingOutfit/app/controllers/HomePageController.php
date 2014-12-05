@@ -11,7 +11,7 @@ class HomePageController extends \BaseController {
       //Select a random article
       $randomArticleId = Article::getRandomArticleId();
      
-			$request = Request::create('/articleDetail/'.$randomArticleId, 'GET', array());
+			$request = Request::create('/articleDetail/small/'.$randomArticleId, 'GET', array());
 		  $response = Route::dispatch($request);
 			$randomArticleView = $response->getContent();
 			//$code = $response->getStatusCode();
@@ -23,18 +23,15 @@ class HomePageController extends \BaseController {
      foreach( $popularArticlesIds as $popularArticleId)
        {
         
-      $request = Request::create('/articleDetail/'.$popularArticleId->id, 'GET', array());
+      $request = Request::create('/articleDetail/small/'.$popularArticleId->id, 'GET', array());
 		  $response = Route::dispatch($request);
 			$popularArticlesView[] = $response->getContent(); //add a popular article to our list
         
       }
      
       
-			return View::make('homepage', array('randomArticleView' => $randomArticleView, 'popularArticlesViews' => $popularArticlesView));
+			 return View::make('homepage', array('randomArticleView' => $randomArticleView, 'popularArticlesViews' => $popularArticlesView));
     }
-    
-     
-    
    return View::make('homepage');
   }
   

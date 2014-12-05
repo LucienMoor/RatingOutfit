@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Commnents</title>
+	<title>Comments</title>
 </head>
 <body>
+  @include('subview/header')
   @include('profil/userProfil')
   <div class="usercommentall">
    @foreach($comments as $comment)

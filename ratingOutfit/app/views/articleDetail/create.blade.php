@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-{{Session::put('userID', 1)}}
+@extends('viewTemplate')
 <?php
-  
   $genderArray=Gender::getGenderArray();
   $styleArray=Style::getStyleArray();
 ?>
-<html>
-<head>
-    <title>Create article</title>
-</head>
-<body>
-<div class="container">
+
+@section('head')
+     <title>Create article</title>
+@stop
+
+@section('body')
+    <div class="container">
 
 <h1>Create article</h1>
 
@@ -46,5 +45,4 @@
 {{ Form::close() }}
 
 </div>
-</body>
-</html>
+@stop

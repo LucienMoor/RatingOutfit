@@ -1,8 +1,11 @@
-<!doctype html>
-<html>
-    <body>
-     @include('profil/userProfil')
-      <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
+@extends('viewTemplate')
+
+@section('head')
+  <title>Article</title>
+@stop
+
+@section('body')
+    <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
       <table class="table table-striped table-bordered">
       <tr>
         <th>title</th>
@@ -42,8 +45,4 @@
       </tr>
          @endforeach
       </table>
-      
-      
-    </body>
-</html>
-
+@stop
