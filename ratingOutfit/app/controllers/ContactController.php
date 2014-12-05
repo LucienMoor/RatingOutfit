@@ -46,7 +46,10 @@ class ContactController extends \BaseController {
 	 */
 	public function store()
 	{
-				        $rules = array(
+    if(Auth::check())
+      
+    {
+      $rules = array(
             'userID'       => 'required',
             'contactID'      => 'required',
         );
@@ -65,11 +68,18 @@ class ContactController extends \BaseController {
             $contact->user_ID=Input::get('userID');
             $contact->contact_ID=Input::get('contactID');
             $contact->save();
-          }
-
+            $pseudo = User::find(Input::get('contactID'))->pseudo;
             // redirect
-            return Redirect::to('user/'.Input::get('contactID'));
+           Session::flash('success_message', 'You have successfully added '.$pseudo.' to your contacts');
+            return Redirect::back();
+          }
+        } 
        }
+    else
+    {
+      Session::flash('error_message', 'You must be logged for this action');
+      return Redirect::back();
+    }
 	}
 
 
@@ -121,8 +131,10 @@ class ContactController extends \BaseController {
 	public function destroy($id)
 	{
 		$contact = Contact::find($id);
+    $pseudo = User::find($contact->contact_ID)->pseudo;
     $contact->delete();
-    return Redirect::to('user');
+    Session::flash('success_message', 'You have removed '.$pseudo.' from your contacts');
+    return Redirect::back();
 	}
 
 
