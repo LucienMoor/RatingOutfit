@@ -5,13 +5,8 @@
 @stop
 
 @section('body')
-@if (Session::has('error'))
-           {{ Session::get('error') }}        
-@endif
-@if (Session::has('status'))
-           {{ Session::get('status') }}      
-@endif
-
+@include('subview/homeNavBar')
+<h1>Password Remind</h1>
 {{ Form::open(array('action' => 'RemindersController@postRemind'))}}
    
     <strong>{{ Form::label('email', 'Email : ') }} </strong>

@@ -2,6 +2,13 @@
 
 class articleDetailController extends \BaseController {
 
+  
+  public function __construct()
+    {
+        // Perform CSRF check on all post/put/patch/delete requests
+        $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    }
+  
 	/**
 	 * Display a listing of the resource.
 	 *

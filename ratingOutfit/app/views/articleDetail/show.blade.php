@@ -5,12 +5,12 @@
 
     <div class="jumbotron text-center">
         <p>
-            <strong>description:</strong> {{ $article->description }}<br>
+            <strong>description:</strong>{{{ $article->description }}}<br>
            <strong>picture:</strong> {{HTML::image("/pictures/article/$article->picture")}}<br>
-          <strong>nombre de vote:</strong> {{ $article->nbVotes() }}<br>
-          <strong>nombre de point:</strong> {{ $article->point }}<br>
-          <strong>style:</strong> {{ $article->style->style }}<br>
-          <strong>gender:</strong> {{ $article->gender() }}<br>
+          <strong>nombre de vote:</strong> {{{ $article->nbVotes() }}}<br>
+          <strong>nombre de point:</strong> {{{ $article->point }}}<br>
+          <strong>style:</strong> {{{ $article->style->style }}}<br>
+          <strong>gender:</strong> {{{ $article->gender() }}}<br>
           {{Form::open(array('action' => 'ArticleVoteController@upVote','method' => 'post'))}}
             {{Form::hidden('articleID', $article->id)}}
             {{Form::hidden('userID', Auth::id())}}
