@@ -216,7 +216,7 @@ class UserController extends \BaseController {
       $user=User::find($userID);
       $user->nbReport=$user->nbReport+1;
       $user->save(); 
-      return View::make('hello');  
+      return Redirect::to('user/');  
   }
   
 }

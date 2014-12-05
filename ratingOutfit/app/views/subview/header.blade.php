@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+   {{ HTML::style('css/header.css') }}
 </head>
 <body>
-  {{Session::put('user_ID',2)}}
-  <img src="" alt="MyLogo"/>
-  <div id="logo"><h1>Rating Outfit</h1></div>
-  <div id="searchBox">@include('subview/searchBar')</div>
-  
-  @if (Auth::check())
-  <div ud="userInfo">
-  <a href="{{ URL::to('user/' . Auth::id()) }}">Me</a>
+  <div class="container">
+    
+      <h1><img src="" class="img-responsive" alt="MyLogo" /></h1>
+      <h2>Rating Outfit</h2>
+      @if (Auth::check())
+      <div id="userInfo">
+      <a href="{{ URL::to('user/' . Auth::id()) }}">Me</a>
+      </div>
+      @else
+      <div id="inscription">
+        <a href=""><h3>Sign in</h3></a>
+        <a href="/user/create"><h3> Join</h3> </a>
+      </div>
+      @endif 
+
   </div>
-  @else
-  <div ud="inscription">
-  <a href="">Sign in</a>
-  <a href="/user/create"> Join </a>
-  </div>
-  @endif
 </body>
 </html>

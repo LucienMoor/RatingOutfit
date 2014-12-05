@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomePageController@getHomePage');
+Route::any('/', 'HomePageController@getHomePage');
 
 Route::get('/userProfil', function()
 {
@@ -62,7 +62,7 @@ Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
 Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
 Route::get('allUserComment/{id}','UserController@getComment');
-Route::post('/home',['as' => 'home','uses' => 'UserController@reportUser']);
+Route::post('report',['uses' => 'UserController@reportUser']);
 Route::post('search', 'SearchBarController@search');
 
 App::missing(function($exception)
