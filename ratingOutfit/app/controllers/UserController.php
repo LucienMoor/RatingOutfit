@@ -146,9 +146,17 @@ class UserController extends \BaseController {
     return View::make('subview/editUserForm')
       ->with('user', $user);
     }
-    else return "you can't edit a other account than your own";
-    }  
-    else return "you must be logged for this action";
+    else
+    {
+      Session::flash('error_message', "you can't edit a other account than your own");
+      return Redirect::back();
+    }
+    }
+    else
+      
+   { Session::flash('error_message', "you must be logged for this action");
+    return Redirect::back();
+   }
 	}
 
 
@@ -232,13 +240,13 @@ class UserController extends \BaseController {
     else
     {
        Session::flash('error_message', "You can't delete a other account than your own !");
-       return Redirect::to('user');
+       return Redirect::back();
     }
     }  
     else
     {
        Session::flash('error_message', "You must be logged for this action !");
-       return Redirect::to('user');
+       return Redirect::back();
     }
 	}
   
@@ -250,12 +258,13 @@ class UserController extends \BaseController {
       $user=User::find($userID);
       $user->nbReport=$user->nbReport+1;
       $user->save(); 
-      return Redirect::to('user/');  
+      Session::flash('success_message', 'You have reported '.$user->pseudo);
+      return Redirect::back();  
     }  
     else
     {
        Session::flash('error_message', "You must be logged for this action !");
-       return Redirect::to('user');
+       return Redirect::back();
     }
   }
   

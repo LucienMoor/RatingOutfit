@@ -10,6 +10,6 @@
 <body>
 
   <div class="container">
-      <h1><img src="" class="img-responsive" alt="MyLogo" /></h1>
-    <h2><a href="/">Rating Outfit</a></h2>
+    <h1><a href="/">{{HTML::image("pictures/dauphinspourlucien.png",'MyLogo', array('class' => 'img-responsive'))}}</a></h1>
   </div>
+

@@ -1,0 +1,18 @@
+liste user, infos ? email ? 
+Page <title>
+CSRF protection -> done
+footer
+messages d'infos -> done
+Logo HE-ARC ?
+valeurs défaut formulaire -> calendrier
+CSS sur certaines pages
+sign in link -> done
+delete bad routes
+nav bar on users and articles list -> done
+{{{}}} for htmlentities
+home page placement random and popular and label
+logo
+redirect signal user
+profil barre pseudo -> done
+logout-> done
+Love button
