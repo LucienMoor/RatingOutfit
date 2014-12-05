@@ -123,11 +123,19 @@ class articleDetailController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+    if (Auth::check())
+    {
+      //check if the user who edit the profil is the owner
+      if(Auth::id() == $id)
+        {
 		    $article = Article::find($id);
 
         // show the edit form and pass the nerd
         return View::make('articleDetail.edit')
             ->with('article', $article);
+        }
+    }
+    return Redirect::to('auth/login');
 	}
 
 
@@ -196,11 +204,19 @@ class articleDetailController extends \BaseController {
 	public function destroy($id)
 	{
 		  // delete
+     if (Auth::check())
+    {
+      //check if the user who edit the profil is the owner
+      if(Auth::id() == $id)
+        {
         $article = Article::find($id);
         $article->delete();
 
         // redirect
         return Redirect::to('articleDetail');
+        }
+     }
+    return Redirect::to('auth/login');
 	}
 
 

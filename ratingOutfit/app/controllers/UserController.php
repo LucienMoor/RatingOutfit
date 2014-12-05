@@ -101,9 +101,12 @@ class UserController extends \BaseController {
 	{
 		 // get the user
      $user = User::find($id);
-
+     $articles=$user->getArticles();
+     
+     $view=View::make('profil/userProfilPresentation')->with('user', $user);
+    $view .= View::make('articleDetail.index')->with('articles',$articles);
     // show the view and pass the user to it
-    return View::make('profil/userProfilPresentation')->with('user', $user);
+    return $view;
 	}
 
   public function getComment($id)

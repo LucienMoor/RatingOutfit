@@ -28,6 +28,9 @@
           <td>{{HTML::image("pictures/article/$value->picture")}}</td>
           <td> {{ $value->style->style }}</td>
           <td>{{ $value->gender() }}</td>
+          <td><a class="btn btn-small btn-success" href="{{ URL::to('articleDetail/' . $value->id) }}">Show this article</a></td>
+          @if (Auth::check())
+            @if (Auth::id()==$value->user_ID)
           <td>
           {{ Form::open(array('url' => 'articleDetail/' . $value->id, 'class' => 'pull-right')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
@@ -40,8 +43,9 @@
             ?>
 
           </td>
-          <td><a class="btn btn-small btn-success" href="{{ URL::to('articleDetail/' . $value->id) }}">Show this article</a></td>
           <td><a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit this article</a></td>
+        @endif
+      @endif
       </tr>
          @endforeach
       </table>
