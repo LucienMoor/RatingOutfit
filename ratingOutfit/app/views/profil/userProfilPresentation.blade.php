@@ -10,10 +10,11 @@
 
 @section('body')
   @include('profil/userProfil')
-  <div class="bodyprofil">
-   
+  <div class="bodyprofil text-center">
    {{ HTML::image("pictures/user/$user->picture") }}
-    <button type="button">Love</button>
+    <?php $data=array('userID'=>Auth::id(),'contactID'=>$user->id);
+             echo View::make('Contacts.AddRemoveForm')->with('data',$data);
+            ?>
     <!-- delete the user (uses the destroy method DESTROY /users/{id} -->
     <div class="text-center">
      @if(Auth::id()==$user->id)
