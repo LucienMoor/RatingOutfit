@@ -1,0 +1,57 @@
+/*articleDetail*/
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+/*header*/
+#inscription{
+    float: right;
+    margin: 5px 20px 0;
+    overflow: hidden;    
+  }
+
+h3{
+  display: inline
+}
+
+a:link {
+  margin-left: 30px;
+  color: #0A58A5;
+  font-weight: bold;
+}
+/*homePage*/
+div.page {
+    display: table;
+}
+
+p.randomArticles, p.popularArticles {
+    display: table-cell;
+
+    padding: 5px;
+    border: 1px solid black;
+}
+div.small{
+  width:50px;
+}
+/*userProfil*/
+.bodyprofil img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bodyprofil h1{
+  text-align:center;
+}
+.bodyprofil h2{
+  text-align:center;
+}
+.bodyprofil button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*articleComment*/
+#textAreaComment{
+  width: 80%;
+  resize: none;
+}

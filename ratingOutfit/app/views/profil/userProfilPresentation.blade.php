@@ -4,7 +4,7 @@
     
 	<meta charset="UTF-8">
 	<title>Laravel PHP Framework</title>
-  {{ HTML::style('css/userprofil.css') }}
+
 
 @stop
 
@@ -16,14 +16,12 @@
              echo View::make('Contacts.AddRemoveForm')->with('data',$data);
             ?>
     <!-- delete the user (uses the destroy method DESTROY /users/{id} -->
-    <div class="text-center">
      @if(Auth::id()==$user->id)
       {{ Form::open(array('url' => 'user/' . $user->id)) }}
       {{ Form::hidden('_method', 'DELETE') }}
-      {{ Form::submit('Delete my profil') }}
+      {{ Form::submit('Delete my profil', array('class' => 'btn btn-danger')) }}
       {{ Form::close() }}
      @endif
-    </div>
     <h1>{{{$user->pseudo}}}</h1>
     <h2>{{{$user->presentation}}}</h2>  
   </div> 

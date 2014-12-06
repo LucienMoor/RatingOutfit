@@ -4,8 +4,8 @@
 
                 {{ HTML::style('assets/css/bootstrap.min.css') }}
                 {{ HTML::style('assets/css/bootstrap-responsive.min.css') }}
-                {{ HTML::style('css/header.css') }}
                 {{ HTML::style('http://fonts.googleapis.com/css?family=Imprima') }}
+                {{ HTML::style('css/main.css') }}
 </head>
 <body>
 
