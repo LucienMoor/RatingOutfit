@@ -1,13 +1,26 @@
-div.page {
-    display: table;
-}
-
-p.randomArticles, p.popularArticles {
-    display: table-cell;
-
-    padding: 5px;
-    border: 1px solid black;
+div.randomArticles{
+  width:50%;
 }
 div.small{
-  width:50px;
+  width:20%;
+}
+.grid{
+  float:left;
+}
+.well{
+  float:left;
+  width:100%;
+}
+div.grid-item{
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+  width:20%;
+  margin:5px;
+  padding: 4px;
+}
+.gigante{
+  transform:scale(5,5);
 }

@@ -731,6 +731,11 @@ a.text-success:focus {
 .text-center {
   text-align: center;
 }
+.center-table
+{
+  margin: 0 auto !important;
+  float: none !important;
+}
 
 h1,
 h2,
