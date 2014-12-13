@@ -1,45 +1,34 @@
-
+{{ HTML::style('css/homePage.css') }}
     <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
-      <table class="table table-striped table-bordered">
-      <tr>
-        <th>title</th>
-        <th>description</th>
-        <th>number of votes</th>
-        <th>points</th>
-        <th>picture</th>
-        <th>style</th>
-        <th>gender</th>
-      </tr>
+      <div class="grid">
           @foreach($articles as $key => $value)
-      <tr>
+        <div class="grid-item">
+          <h3>{{$value->title}}</h3><br/>
+          {{ $value->description }}<br/>
+          {{ $value->nbVotes() }}<br/>
+          {{ $value->point }}<br/>
           
-        <p>
-          <td>{{$value->title}}</td>
-          <td> {{ $value->description }}</td>
-          <td>{{ $value->nbVotes() }}</td>
-          <td> {{ $value->point }}</td>
-          
-          <td>{{HTML::image("pictures/article/$value->picture")}}</td>
-          <td> {{ $value->style->style }}</td>
-          <td>{{ $value->gender() }}</td>
-          <td><a class="btn btn-small btn-success" href="{{ URL::to('articleDetail/' . $value->id) }}">Show this article</a></td>
+          {{HTML::image("pictures/article/$value->picture")}}<br/>
+          {{ $value->style->style }}<br/>
+          {{ $value->gender() }}<br/>
+          <a class="btn btn-small btn-success" href="{{ URL::to('articleDetail/' . $value->id) }}">Show this article</a><br/>
           @if (Auth::check())
             @if (Auth::id()==$value->user_ID)
-          <td>
-          {{ Form::open(array('url' => 'articleDetail/' . $value->id, 'class' => 'pull-right')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
-            {{ Form::close() }}
-          </td>
-          <td>
-            <?php $data=array('userID'=>Auth::id(),'articleID'=>$value->id);
-             echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
-            ?>
+          
+            {{ Form::open(array('url' => 'articleDetail/' . $value->id, 'class' => 'pull-right')) }}
+                      {{ Form::hidden('_method', 'DELETE') }}
+                      {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
+              {{ Form::close() }}
+            <br/>
 
-          </td>
-          <td><a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit this article</a></td>
+              <?php $data=array('userID'=>Auth::id(),'articleID'=>$value->id);
+               echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
+              ?>
+            <br/>
+            <a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit               this article</a><br/>
         @endif
       @endif
-      </tr>
-         @endforeach
-      </table>
+      </div>
+    @endforeach
+</div>
+<br/>
