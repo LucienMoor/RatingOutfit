@@ -3,10 +3,10 @@
   <div class="usercomment">
     {{ Form::label('addcomment', 'Add your comment: ') }}
     {{ Form::textarea('comment',"Write a comment here",array(
-    'id'      => 'textAreaCommentUser',
-    'rows'    => 5,)); }} 
+    'id'      => 'textAreaComment',
+    'rows'    => 10,)); }} 
      @if (Auth::check()) 
-    {{ Form::submit('Add!') }}
+    {{ Form::submit('Add!', array('class' => 'btn btn-primary')) }}
     {{Form::hidden('userID',$data)}}
     {{ Form::close() }}
     @else

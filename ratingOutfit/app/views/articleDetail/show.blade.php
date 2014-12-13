@@ -1,5 +1,5 @@
 <!-- app/views/nerds/show.blade.php -->
-{{ HTML::style('css/articleDetail.css') }}
+
 
 <div class="container">
 <h1>Showing {{{ $article->title }}}</h1>
