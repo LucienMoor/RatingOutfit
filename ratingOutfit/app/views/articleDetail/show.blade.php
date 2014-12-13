@@ -3,8 +3,6 @@
 
 <div class="container">
 <h1>Showing {{{ $article->title }}}</h1>
-      
-
     <div class="jumbotron text-center">
         <p>
            <strong>description:</strong>{{{ $article->description }}}<br>
@@ -35,8 +33,8 @@
              <?php $data=array('userID'=>Auth::id(),'articleID'=>$article->id);
              echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
             ?>
-          
         </p>
+      
     </div>
-
+    @include('subview.articleCommentsMinimal')
 </div>

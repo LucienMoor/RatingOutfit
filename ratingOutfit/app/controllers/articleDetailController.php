@@ -104,7 +104,7 @@ class articleDetailController extends \BaseController {
 
         // show the view and pass the nerd to it
         $view = View::make('articleDetail.show')
-            ->with('article', $article);
+            ->with('article', $article)->with('comments',$article->getComments());
      $subHead = View::make('subview/homeNavBar');
     return View::make('contentView')->withView($view)->withHeader('<title>'.$article->title.'</title>')->with('subHead',$subHead);
 	}
@@ -241,3 +241,4 @@ class articleDetailController extends \BaseController {
 
 
 }
+  

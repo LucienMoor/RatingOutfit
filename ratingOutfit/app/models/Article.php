@@ -22,4 +22,9 @@ class Article extends Eloquent {
   {
      return DB::select('SELECT id FROM Articles ORDER BY point DESC LIMIT '.$nbArticles);
   }
+  public function getComments()
+  {
+    $comment = ArticleComment::where('article_ID','=',$this->id)->get();
+    return $comment;
+  }
 }
