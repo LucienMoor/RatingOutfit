@@ -121,7 +121,7 @@ class articleDetailController extends \BaseController {
 
         // show the view and pass the nerd to it
    
-        return View::make('articleDetail.show')
+        return View::make('articleDetail.showHomepage')
             ->with('article', $article);
 	}
   

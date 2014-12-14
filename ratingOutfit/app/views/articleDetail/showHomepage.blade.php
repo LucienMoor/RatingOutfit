@@ -34,7 +34,6 @@
              echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
             ?>
         </p>
-        @include('subview.articleCommentsMinimal')
     </div>
 
 </div>
