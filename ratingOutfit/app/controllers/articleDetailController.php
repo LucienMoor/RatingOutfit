@@ -104,7 +104,7 @@ class articleDetailController extends \BaseController {
 
         // show the view and pass the nerd to it
         $view = View::make('articleDetail.show')
-            ->with('article', $article);
+            ->with('article', $article)->with('comments',$article->getComments());
      $subHead = View::make('subview/homeNavBar');
     return View::make('contentView')->withView($view)->withHeader('<title>'.$article->title.'</title>')->with('subHead',$subHead);
 	}
@@ -115,6 +115,17 @@ class articleDetailController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+
+  public function showSmall($id)
+	{
+       $article = Article::find($id);
+
+        // show the view and pass the nerd to it
+   
+        return View::make('articleDetail.showHomepage')
+            ->with('article', $article);
+	}
+  
   public function showPreview($id)
 	{
        $article = Article::find($id);
@@ -231,3 +242,4 @@ class articleDetailController extends \BaseController {
 
 
 }
+  

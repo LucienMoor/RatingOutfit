@@ -10,6 +10,6 @@
 <body>
 
   <div class="container">
-    <h1><a href="/">{{HTML::image("pictures/dauphinspourlucien.png",'MyLogo', array('class' => 'img-responsive'))}}</a></h1>
+    <h1><a href="/">{{HTML::image("pictures/logo.png",'MyLogo', array('class' => 'img-responsive'))}}</a></h1>
   </div>
 
