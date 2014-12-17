@@ -1,16 +1,9 @@
 <!-- app/views/nerds/show.blade.php -->
 
-
-<div class="container">
-
-      
-
-    <div class="jumbotron text-center small">
-        <p>
-          <strong>Title</strong>{{ $article->title }}
-           <strong>description:</strong>{{{ $article->description }}}<br>
-           <strong>picture:</strong> {{HTML::image("/pictures/article/$article->picture")}}<br>
-        </p>
+    <div class="articlePreview">
+        
+        <h2>{{{ $article->title }}}</h2>
+          {{{ $article->description }}}<br>
+          {{HTML::image("/pictures/article/$article->picture")}}<br>
+        
     </div>
-
-</div>

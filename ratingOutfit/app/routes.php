@@ -22,6 +22,7 @@ Route::get('/favoriteArticle', function()
 {
 	return View::make('subview/favoriteArticle');
 });
+
 Route::get('/favoriteUser', function()
 {
 	return View::make('subview/favoriteUser');

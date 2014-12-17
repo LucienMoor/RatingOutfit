@@ -4,25 +4,23 @@
     <title>Rating Outfit</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                {{ HTML::style('assets/css/bootstrap.min.css') }}
-                {{ HTML::style('assets/css/bootstrap-responsive.min.css') }}
-                {{ HTML::style('http://fonts.googleapis.com/css?family=Imprima') }}
+  {{ HTML::style('css/homepage.css') }}
 @stop
 
 @section('body')
    @include('subview/homeNavBar')
-    <div class="page">
-    <p class="randomArticles">
+<div class="page">
+    <div class="randomArticles">
       {{ $randomArticleView or 'No article' }}
-    </p>
+    </div>
 
-    <p class="popularArticles">
+    <div class="popularArticles">
       @if (isset($popularArticlesViews))
         @foreach ($popularArticlesViews as $popularArticleView)
           {{ $popularArticleView }}
         @endforeach
       @endif
-    </p>
+    </div>
 </div>
 @stop
   

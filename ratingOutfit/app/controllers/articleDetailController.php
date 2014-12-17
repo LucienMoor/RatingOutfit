@@ -115,16 +115,6 @@ class articleDetailController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-  public function showSmall($id)
-	{
-       $article = Article::find($id);
-
-        // show the view and pass the nerd to it
-   
-        return View::make('articleDetail.show')
-            ->with('article', $article);
-	}
-  
   public function showPreview($id)
 	{
        $article = Article::find($id);
