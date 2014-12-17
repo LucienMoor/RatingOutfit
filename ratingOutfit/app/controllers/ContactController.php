@@ -47,8 +47,8 @@ class ContactController extends \BaseController {
 	public function store()
 	{
     if(Auth::check())
-      
     {
+
       $rules = array(
             'userID'       => 'required',
             'contactID'      => 'required',
@@ -64,6 +64,9 @@ class ContactController extends \BaseController {
     
             // store
           if(!Contact::ifExist(Input::get('userID'),Input::get('contactID'))){
+            
+          if(Input::get('userID') != Input::get('contactID'))
+          {
             $contact = new Contact;
             $contact->user_ID=Input::get('userID');
             $contact->contact_ID=Input::get('contactID');
@@ -73,7 +76,13 @@ class ContactController extends \BaseController {
            Session::flash('success_message', 'You have successfully added '.$pseudo.' to your contacts');
             return Redirect::back();
           }
-        } 
+          else
+          {
+          Session::flash('error_message', "You can't add yourself to your contact");
+          return Redirect::back();
+          }
+          }
+         }
        }
     else
     {
