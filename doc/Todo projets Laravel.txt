@@ -15,4 +15,14 @@ logo
 redirect signal user
 profil barre pseudo -> done
 logout-> done
-Love button
+Love button -> done
+Filtre
+login filter
+login pas redirect sur home
+create article only for log in user -> done
+home nav bar not in create article
+add to contact only for log in user
+check if id exist in database
+bug pour report user si login
+report only once
+save the comment if the user must log in
