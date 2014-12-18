@@ -1,10 +1,15 @@
-{{ HTML::style('css/homePage.css') }}
-   @if (Auth::check())
-<a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
-  @endif
+
+{{ HTML::style('css/main.css') }}
+
+@if (Auth::check())
+  <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
+@endif
+
+      @include('subview.searchBar')
+
       <div class="grid">
           @foreach($articles as $key => $value)
-        <div class="grid-item">
+        <div class="grid-item <?php echo $value->style->style.' '.$value->gender(); ?>">
           <h3>{{$value->title}}</h3><br/>
           {{ $value->description }}<br/>
           {{ $value->nbVotes() }}<br/>
@@ -27,7 +32,7 @@
                echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
               ?>
             <br/>
-            <a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit               this article</a><br/>
+            <a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit this article</a><br/>
         @endif
       @endif
       </div>
