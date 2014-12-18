@@ -6,6 +6,7 @@
                 {{ HTML::style('assets/css/bootstrap-responsive.min.css') }}
                 {{ HTML::style('http://fonts.googleapis.com/css?family=Imprima') }}
                 {{ HTML::style('css/main.css') }}
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 

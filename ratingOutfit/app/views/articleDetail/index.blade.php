@@ -1,12 +1,12 @@
 {{ HTML::style('css/main.css') }}
     <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
 
-      <h3>@include('subview.searchBar')</h3>
+      @include('subview.searchBar')
 
       <div class="grid">
 
           @foreach($articles as $key => $value)
-        <div class="grid-item">
+        <div class="grid-item <?php echo $value->style->style.' '.$value->gender(); ?>">
           <h3>{{$value->title}}</h3><br/>
           {{ $value->description }}<br/>
           {{ $value->nbVotes() }}<br/>
