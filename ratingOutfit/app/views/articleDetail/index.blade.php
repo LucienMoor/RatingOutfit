@@ -1,4 +1,4 @@
-{{ HTML::style('css/homePage.css') }}
+{{ HTML::style('css/main.css') }}
     <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
       <div class="grid">
           @foreach($articles as $key => $value)
