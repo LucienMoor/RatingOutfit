@@ -82,19 +82,18 @@ div.small{
 }
 
 div.page{
+   display:table;
    position: relative;
    width : 100%;
 }
 
 div.randomArticles{
-    float: left;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+    width:90%;    
   }
 
 div.popularArticles{
-    float: right;
-    margin: 5px 20px 0;
+    display:table-cell;
   }

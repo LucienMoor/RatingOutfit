@@ -1,10 +1,8 @@
-{{ HTML::style('css/main.css') }}
-    <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
-
-      <h3>@include('subview.searchBar')</h3>
-
+{{ HTML::style('css/homePage.css') }}
+   @if (Auth::check())
+<a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
+  @endif
       <div class="grid">
-
           @foreach($articles as $key => $value)
         <div class="grid-item">
           <h3>{{$value->title}}</h3><br/>
