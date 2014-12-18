@@ -74,12 +74,27 @@ div.grid-item{
   width:100%;
 }
 
-div.randomArticles{
-  width:50%;
-}
 div.small{
   width:20%;
 }
 .grid{
   float:left;
 }
+
+div.page{
+   position: relative;
+   width : 100%;
+}
+
+div.randomArticles{
+    float: left;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    
+  }
+
+div.popularArticles{
+    float: right;
+    margin: 5px 20px 0;
+  }

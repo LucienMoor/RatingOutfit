@@ -22,6 +22,7 @@ Route::get('/favoriteArticle', function()
 {
 	return View::make('subview/favoriteArticle');
 });
+
 Route::get('/favoriteUser', function()
 {
 	return View::make('subview/favoriteUser');
@@ -64,7 +65,6 @@ Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
 Route::get('allUserComment/{id}','UserController@getComment');
 Route::post('report',['uses' => 'UserController@reportUser']);
-Route::post('search', 'SearchBarController@search');
 
 App::missing(function($exception)
 {

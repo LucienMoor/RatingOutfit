@@ -20,6 +20,20 @@ class ArticleCommentController extends \BaseController {
     return View::make('subview/articleComments')->with('articleComment', $articleComment);
     
 	}
+  
+  public function search()
+    {
+      $data = Input::all();
+    if(Request::ajax())
+    {
+      
+       
+        }
+        
+        else{
+            return 0;
+        }
+    }
 
 
 	/**

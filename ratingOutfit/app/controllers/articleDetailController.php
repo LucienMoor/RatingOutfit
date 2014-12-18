@@ -115,6 +115,7 @@ class articleDetailController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+
   public function showSmall($id)
 	{
        $article = Article::find($id);
