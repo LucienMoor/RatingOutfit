@@ -2,27 +2,26 @@
 
 @section('head')
     <title>Rating Outfit</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://rawgithub.com/desandro/classie/master/classie.js"></script>
+ <script src="http://masonry.desandro.com/masonry.pkgd.js "></script>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                {{ HTML::style('assets/css/bootstrap.min.css') }}
-                {{ HTML::style('assets/css/bootstrap-responsive.min.css') }}
-                {{ HTML::style('http://fonts.googleapis.com/css?family=Imprima') }}
+  {{ HTML::style('css/main.css') }}
 @stop
-
 @section('body')
    @include('subview/homeNavBar')
-    <div class="page">
-    <p class="randomArticles">
+<div class="page">
+    <div class="randomArticles">
       {{ $randomArticleView or 'No article' }}
-    </p>
+    </div>
 
-    <p class="popularArticles">
+    <div class="popularArticles">
       @if (isset($popularArticlesViews))
         @foreach ($popularArticlesViews as $popularArticleView)
           {{ $popularArticleView }}
         @endforeach
       @endif
-    </p>
+    </div>
 </div>
 @stop
-  

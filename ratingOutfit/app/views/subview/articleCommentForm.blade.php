@@ -2,7 +2,7 @@
   {{ Form::open(array('url' => 'articleComment', 'method' => 'post')) }}
   <div class="articlecomment">
     {{ Form::label('addcomment', 'Add your comment: ') }}
-    {{ Form::textarea('comment','Write a comment here!'),array(
+    {{ Form::textarea('comment',"Write a comment here!",array(
     'id'      => 'textAreaComment',
     'rows'    => 10,)); }}
      @if (Auth::check()) 

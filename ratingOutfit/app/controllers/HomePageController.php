@@ -11,7 +11,7 @@ class HomePageController extends \BaseController {
       //Select a random article
       $randomArticleId = Article::getRandomArticleId();
      
-			$request = Request::create('/articleDetail/small/'.$randomArticleId, 'GET', array());
+			$request = Request::create('/articleDetail/preview/'.$randomArticleId, 'GET', array());
 		  $response = Route::dispatch($request);
 			$randomArticleView = $response->getContent();
 			//$code = $response->getStatusCode();
