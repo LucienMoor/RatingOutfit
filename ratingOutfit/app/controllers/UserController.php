@@ -7,6 +7,9 @@ class UserController extends \BaseController {
     {
         // Perform CSRF check on all post/put/patch/delete requests
         $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    
+       $this->beforeFilter('auth',  array('only' =>
+                            array('edit','update','destroy')));
     }
   
 	/**
@@ -133,12 +136,9 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//check if the user is logged
-    if (Auth::check())
-    {
       //check if the user who edit the profil is the owner
-      if(Auth::id() == $id)
-        {
+   if(Auth::id() == $id)
+   {
     // get the user
    $user = User::find($id);
 
@@ -149,14 +149,8 @@ class UserController extends \BaseController {
     else
     {
       Session::flash('error_message', "you can't edit a other account than your own");
-      return Redirect::back();
+      return Redirect::to('/user/'.$id);
     }
-    }
-    else
-      
-   { Session::flash('error_message', "you must be logged for this action");
-    return Redirect::back();
-   }
 	}
 
 
@@ -223,9 +217,6 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-    //check if the user is logged
-    if (Auth::check())
-    {
       //check if the user who delete the profil is the owner
       if(Auth::id() == $id)
         {
@@ -240,32 +231,26 @@ class UserController extends \BaseController {
     else
     {
        Session::flash('error_message', "You can't delete a other account than your own !");
-       return Redirect::back();
-    }
+       return Redirect::to('/user/'.$id);
     }  
-    else
-    {
-       Session::flash('error_message', "You must be logged for this action !");
-       return Redirect::back();
-    }
 	}
   
   public function reportUser()
   {
-    if (Auth::check())
+    if(Auth::check())
     {
       $userID=Input::get('userID');
       $user=User::find($userID);
       $user->nbReport=$user->nbReport+1;
       $user->save(); 
       Session::flash('success_message', 'You have reported '.$user->pseudo);
-      return Redirect::back();  
-    }  
+      return  Redirect::back(); 
+    }
     else
     {
-       Session::flash('error_message', "You must be logged for this action !");
+       Session::flash('error_message', "You must be logged for doing this !");
        return Redirect::back();
-    }
+    }  
   }
   
 }

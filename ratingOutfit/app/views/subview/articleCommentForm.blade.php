@@ -5,7 +5,7 @@
     {{ Form::textarea('comment',"Write a comment here!",array(
     'id'      => 'textAreaComment',
     'rows'    => 10,)); }}
-     @if (Auth::check()) 
+    @if (Auth::check()) 
     {{ Form::submit('Add!', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @else

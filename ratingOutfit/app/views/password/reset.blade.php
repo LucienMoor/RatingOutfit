@@ -7,6 +7,7 @@
 @section('body')
 @include('subview/homeNavBar')
 <h1>Password Reset</h1>
+  
 {{ Form::open(array('action' => 'RemindersController@postReset'))}}
     {{ Form::hidden('token', $token) }}
     

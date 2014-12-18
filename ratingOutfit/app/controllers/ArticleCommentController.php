@@ -7,6 +7,9 @@ class ArticleCommentController extends \BaseController {
     {
         // Perform CSRF check on all post/put/patch/delete requests
         $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    
+        $this->beforeFilter('auth',  array('only' =>
+                            array('create', 'store')));
     }
 	/**
 	 * Display a listing of the resource.
