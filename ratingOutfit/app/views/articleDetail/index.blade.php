@@ -1,5 +1,6 @@
 
     <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
+      <h3>@include('subview.searchBar')</h3>
       <table class="table table-striped table-bordered">
       <tr>
         <th>title</th>

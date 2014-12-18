@@ -64,7 +64,6 @@ Route::controller('auth', 'LoginController');
 Route::controller('password', 'RemindersController'); 
 Route::get('allUserComment/{id}','UserController@getComment');
 Route::post('report',['uses' => 'UserController@reportUser']);
-Route::post('search', 'SearchBarController@search');
 
 App::missing(function($exception)
 {
