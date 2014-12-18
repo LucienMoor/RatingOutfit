@@ -7,7 +7,7 @@
  <script src="http://masonry.desandro.com/masonry.pkgd.js "></script>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {{ HTML::style('css/homepage.css') }}
+  {{ HTML::style('css/main.css') }}
 @stop
 @section('body')
    @include('subview/homeNavBar')

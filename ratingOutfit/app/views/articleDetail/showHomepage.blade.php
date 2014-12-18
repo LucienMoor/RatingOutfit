@@ -5,8 +5,8 @@
 <h1>Showing {{{ $article->title }}}</h1>
     <div class="jumbotron text-center">
         <p>
-           <strong>description:</strong>{{{ $article->description }}}<br>
-           <strong>picture:</strong> {{HTML::image("/pictures/article/$article->picture")}}<br>
+           {{{ $article->description }}}<br>
+           {{HTML::image("/pictures/article/$article->picture")}}<br>
 
           <strong>nombre de vote:</strong> {{{ $article->nbVotes() }}}<br>
           <strong>nombre de point:</strong> {{{ $article->point }}}<br>
