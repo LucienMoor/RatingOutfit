@@ -1,6 +1,10 @@
-{{ HTML::style('css/homePage.css') }}
+{{ HTML::style('css/main.css') }}
     <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
+
+      <h3>@include('subview.searchBar')</h3>
+
       <div class="grid">
+
           @foreach($articles as $key => $value)
         <div class="grid-item">
           <h3>{{$value->title}}</h3><br/>
