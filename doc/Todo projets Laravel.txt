@@ -26,3 +26,4 @@ check if id exist in database
 bug pour report user si login
 report only once
 save the comment if the user must log in
+Add style and gender
