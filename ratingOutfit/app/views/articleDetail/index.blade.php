@@ -1,41 +1,43 @@
 
 {{ HTML::style('css/main.css') }}
+<div class="page">
+  @if (Auth::check())
+    <div class="createArticle"><a href="{{ URL::to('articleDetail/create') }}">Create an article</a></div>
+  @endif
+  <br/>
+        <div class="filter">@include('subview.filter')</div>
 
-@if (Auth::check())
-  <a href="{{ URL::to('articleDetail/create') }}">Create an article</a>
-@endif
+        <div class="grid">
+            @foreach($articles as $key => $value)
+          <div class="grid-item <?php echo $value->style->style.' '.$value->gender(); ?> all">
+            <h3>{{$value->title}}</h3><br/>
+            {{ $value->description }}<br/>
+            {{ $value->nbVotes() }}<br/>
+            {{ $value->point }}<br/>
 
-      @include('subview.searchBar')
+            {{HTML::image("pictures/article/$value->picture")}}<br/>
+            {{ $value->style->style }}<br/>
+            {{ $value->gender() }}<br/>
+            <a class="btn btn-small btn-success" href="{{ URL::to('articleDetail/' . $value->id) }}">Show this article</a><br/>
+            @if (Auth::check())
+              @if (Auth::id()==$value->user_ID)
 
-      <div class="grid">
-          @foreach($articles as $key => $value)
-        <div class="grid-item <?php echo $value->style->style.' '.$value->gender(); ?>">
-          <h3>{{$value->title}}</h3><br/>
-          {{ $value->description }}<br/>
-          {{ $value->nbVotes() }}<br/>
-          {{ $value->point }}<br/>
-          
-          {{HTML::image("pictures/article/$value->picture")}}<br/>
-          {{ $value->style->style }}<br/>
-          {{ $value->gender() }}<br/>
-          <a class="btn btn-small btn-success" href="{{ URL::to('articleDetail/' . $value->id) }}">Show this article</a><br/>
-          @if (Auth::check())
-            @if (Auth::id()==$value->user_ID)
-          
-            {{ Form::open(array('url' => 'articleDetail/' . $value->id, 'class' => 'pull-right')) }}
-                      {{ Form::hidden('_method', 'DELETE') }}
-                      {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
-              {{ Form::close() }}
-            <br/>
+              {{ Form::open(array('url' => 'articleDetail/' . $value->id, 'class' => 'pull-right')) }}
+                        {{ Form::hidden('_method', 'DELETE') }}
+                        {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
+                {{ Form::close() }}
+              <br/>
 
-              <?php $data=array('userID'=>Auth::id(),'articleID'=>$value->id);
-               echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
-              ?>
-            <br/>
-            <a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit this article</a><br/>
+                <?php $data=array('userID'=>Auth::id(),'articleID'=>$value->id);
+                 echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
+                ?>
+              <br/>
+              <a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit this article</a><br/>
+          @endif
         @endif
-      @endif
-      </div>
-    @endforeach
-</div>
-<br/>
+        </div>
+      @endforeach
+  </div>
+  </div> 
+  <br/>
+
