@@ -31,9 +31,12 @@
 
             </td>
             <td>
-             <?php $data=array('userID'=>Auth::id(),'contactID'=>$value->id);
-             echo View::make('Contacts.AddRemoveForm')->with('data',$data);
-            ?>
+              @if (Auth::check()) 
+                 <?php $data=array('userID'=>Auth::id(),'contactID'=>$value->id);
+                 echo View::make('Contacts.AddRemoveForm')->with('data',$data);
+
+                ?>
+             @endif
            </td>
         </tr>
     @endforeach

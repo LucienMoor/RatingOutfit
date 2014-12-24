@@ -13,47 +13,20 @@
 
 Route::any('/', 'HomePageController@getHomePage');
 
-Route::get('/userProfil', function()
-{
-	return View::make('profil/userProfil');
-});
-
-Route::get('/favoriteArticle', function()
-{
-	return View::make('subview/favoriteArticle');
-});
-
-Route::get('/favoriteUser', function()
-{
-	return View::make('subview/favoriteUser');
-});
-/*Route::get('/userComment', function()
-{
-	return View::make('subview/userCommentAll');
-});*/
-Route::get('/articleDetail', function()
-{
-	return View::make('articleDetail');
-});
-Route::get('/articleGallery', function()
-{
-	return View::make('articleGallery');
-});
 Route::resource('contact','ContactController');
+
 Route::resource('articleFavorite', 'ArticleFavorisController');
-//root for Article
+
 Route::resource('articleDetail', 'articleDetailController');
+
 Route::get('articleDetail/small/{id}','articleDetailController@showSmall');
+
 Route::get('articleDetail/preview/{id}','articleDetailController@showPreview');
 
-Route::get('/pictures/article/{pictureName}', function($picture)
-{
-  
-	$filepath = '/home/action/workspace/ratingOutfit/pictures/article/' . $picture;
-	return HTML::image($filepath);
-});
 Route::get('articleList/{id}','ArticleFavorisController@listFavorites');
+
 Route::get('contactList/{id}','ContactController@listContacts');
+
 Route::post('upVote','ArticleVoteController@upVote');
 
 Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
@@ -62,8 +35,11 @@ Route::get('/login', array('as' => 'login', 'before' => 'guest', function()
 }));
 
 Route::controller('auth', 'LoginController');
+
 Route::controller('password', 'RemindersController'); 
+
 Route::get('allUserComment/{id}','UserController@getComment');
+
 Route::post('report',['uses' => 'UserController@reportUser']);
 
 App::missing(function($exception)
@@ -72,7 +48,9 @@ App::missing(function($exception)
 });
 
 Route::resource('user', 'UserController');
+
 Route::resource('articleComment', 'ArticleCommentController');
+
 Route::resource('userComments', 'UserCommentController');
 
 

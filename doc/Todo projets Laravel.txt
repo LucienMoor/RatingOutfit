@@ -10,9 +10,21 @@ sign in link -> done
 delete bad routes
 nav bar on users and articles list -> done
 {{{}}} for htmlentities
-home page placement random and popular and label
-logo
+home page placement random and popular and label -> done
+logo -> Lea
 redirect signal user
 profil barre pseudo -> done
 logout-> done
-Love button
+Love button -> done
+Filtre -> done
+login filter -> done
+login pas redirect sur home
+create article only for log in user -> done
+home nav bar not in create article
+add to contact only for log in user 
+check if id exist in database
+bug pour report user si login
+report only once
+save the comment if the user must log in
+Add style and gender
+change debug var

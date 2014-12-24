@@ -7,6 +7,9 @@ class articleDetailController extends \BaseController {
     {
         // Perform CSRF check on all post/put/patch/delete requests
         $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+    
+        $this->beforeFilter('auth',  array('only' =>
+                            array('create', 'store','edit','update','destroy')));
     }
   
 	/**
@@ -102,9 +105,9 @@ class articleDetailController extends \BaseController {
 	{
         $article = Article::find($id);
 
-        // show the view and pass the nerd to it
         $view = View::make('articleDetail.show')
             ->with('article', $article)->with('comments',$article->getComments());
+    //return $article;
      $subHead = View::make('subview/homeNavBar');
     return View::make('contentView')->withView($view)->withHeader('<title>'.$article->title.'</title>')->with('subHead',$subHead);
 	}
@@ -144,20 +147,18 @@ class articleDetailController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-    if (Auth::check())
-    {
       //check if the user who edit the profil is the owner
-      if(Auth::id() == $id)
+      $article = Article::find($id);
+      if(Auth::id() == $article->user_ID)
         {
-		    $article = Article::find($id);
-
         // show the edit form and pass the nerd
         return View::make('articleDetail.edit')
             ->with('article', $article);
         }
+       Session::flash('error_message', "You can't edit a other article than your own !");
+    
+       return Redirect::to('/articleDetail/'.$id);
     }
-    return Redirect::to('auth/login');
-	}
 
 
 	/**
@@ -211,6 +212,7 @@ class articleDetailController extends \BaseController {
           }
         }
             // redirect
+             Session::flash('sucess_message', "You have successfully edited an article !");
             return Redirect::to('articleDetail');
        }
 	}
@@ -224,22 +226,20 @@ class articleDetailController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		  // delete
-     if (Auth::check())
-    {
       //check if the user who edit the profil is the owner
-      if(Auth::id() == $id)
+       $article = Article::find($id);
+      if(Auth::id() == $article->user_ID)
         {
-        $article = Article::find($id);
+		    
         $article->delete();
 
         // redirect
+        Session::flash('sucess_message', "You have successfully removed an article !");
         return Redirect::to('articleDetail');
         }
+        Session::flash('error_message', "You can't delete a other article than your own !");
+       return Redirect::to('/articleDetail/'.$id);
      }
-    return Redirect::to('auth/login');
-	}
-
 
 }
   
