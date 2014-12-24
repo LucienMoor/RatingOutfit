@@ -7,7 +7,7 @@ Logo HE-ARC ?
 valeurs défaut formulaire -> calendrier
 CSS sur certaines pages
 sign in link -> done
-delete bad routes
+delete bad routes-> done
 nav bar on users and articles list -> done
 {{{}}} for htmlentities
 home page placement random and popular and label -> done
