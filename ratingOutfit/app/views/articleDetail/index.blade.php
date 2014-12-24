@@ -25,12 +25,11 @@
               {{ Form::close() }}
             <br/>
 
-              <?php $data=array('userID'=>Auth::id(),'articleID'=>$value->id);
-               echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
-              ?>
-            <br/>
             <a class="btn btn-small btn-info" href="{{ URL::to('articleDetail/' . $value->id . '/edit') }}">Edit               this article</a><br/>
         @endif
+                        <?php $data=array('userID'=>Auth::id(),'articleID'=>$value->id);
+               echo View::make('articleFavorite.AddRemoveForm')->with('data',$data);
+              ?>
       @endif
       </div>
     @endforeach
