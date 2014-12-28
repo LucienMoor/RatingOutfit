@@ -24,7 +24,14 @@
       {{ Form::close() }}
      @endif
     <h1>{{{$user->pseudo}}}</h1>
-    <h2>{{{$user->presentation}}}</h2>  
+    <h2>{{{$user->country}}}</h2> 
+    <?php
+    $todayDate = new DateTime();
+    $birthday = new DateTime($user->birthdate);
+    $age = $todayDate->diff($birthday);
+    ?>
+    <h4>{{{$age->y}}} year old</h4>
+    <h3>{{{$user->presentation}}}</h3>  
   </div> 
 
   @include('articleDetail.index')
