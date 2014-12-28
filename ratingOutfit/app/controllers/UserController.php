@@ -177,7 +177,11 @@ class UserController extends \BaseController {
     {
       $user = User::find($id);;
 
-      $user->password = Hash::make(Input::get('newPassword'));
+      if (Input::has('newPassword'))
+      {
+        $user->password = Hash::make(Input::get('newPassword'));
+      }
+      
       $user->email = Input::get('email');
      
       if (Input::has('birthdate'))

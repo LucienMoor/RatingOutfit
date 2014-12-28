@@ -9,7 +9,10 @@
 @stop
 
 @section('body')
+@include('subview/homeNavBar')
+
     <div class="container">
+    
 
 <h1>Create article</h1>
 

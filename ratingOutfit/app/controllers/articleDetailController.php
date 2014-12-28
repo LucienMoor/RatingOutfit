@@ -36,6 +36,7 @@ class articleDetailController extends \BaseController {
 	public function create()
 	{
     		return View::make('articleDetail.create');
+    
 	}
 
 
