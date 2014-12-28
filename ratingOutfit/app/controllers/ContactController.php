@@ -100,7 +100,7 @@ class ContactController extends \BaseController {
 	 */
 	public function show($id)
 	{
-				$contact = Contact::find($id);
+				$contact = Contact::findOrFail($id);
         // show the view and pass the article ID
         return View::make('profil.userProfilPresentation')
             ->with('user', $contact->contact_ID);
@@ -139,7 +139,7 @@ class ContactController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$contact = Contact::find($id);
+		$contact = Contact::findOrFail($id);
     $pseudo = User::find($contact->contact_ID)->pseudo;
     $contact->delete();
     Session::flash('success_message', 'You have removed '.$pseudo.' from your contacts');

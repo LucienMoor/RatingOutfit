@@ -6,7 +6,7 @@ class UserController extends \BaseController {
   public function __construct()
     {
         // Perform CSRF check on all post/put/patch/delete requests
-        $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+       $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
     
        $this->beforeFilter('auth',  array('only' =>
                             array('edit','update','destroy')));
@@ -102,8 +102,8 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		 // get the user
-     $user = User::find($id);
+		 // get the user or throw an ModelNotFound error if he doesn't exist
+     $user = User::findOrFail($id);
      $articles=$user->getArticles();
      
     // show the view and pass the user to it
@@ -113,7 +113,7 @@ class UserController extends \BaseController {
   public function getComment($id)
   {
    
-      $user = User::find($id);
+      $user = User::findOrFail($id);
       $comments=$user->comment();
 
       $userComment=array();
@@ -140,7 +140,7 @@ class UserController extends \BaseController {
    if(Auth::id() == $id)
    {
     // get the user
-   $user = User::find($id);
+   $user = User::findOrFail($id);
 
     // show the edit form and pass the user
     return View::make('subview/editUserForm')
@@ -175,7 +175,7 @@ class UserController extends \BaseController {
     }
     else
     {
-      $user = User::find($id);;
+      $user = User::findOrFail($id);;
 
       if (Input::has('newPassword'))
       {
@@ -225,7 +225,7 @@ class UserController extends \BaseController {
       if(Auth::id() == $id)
         {
 		    // delete
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->delete();
 
         // redirect
@@ -244,7 +244,7 @@ class UserController extends \BaseController {
     if(Auth::check())
     {
       $userID=Input::get('userID');
-      $user=User::find($userID);
+      $user=User::findOrFail($userID);
       $user->nbReport=$user->nbReport+1;
       $user->save(); 
       Session::flash('success_message', 'You have reported '.$user->pseudo);

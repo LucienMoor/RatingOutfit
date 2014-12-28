@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,16 @@ Route::get('allUserComment/{id}','UserController@getComment');
 
 Route::post('report',['uses' => 'UserController@reportUser']);
 
+//when the page doesn't exist
 App::missing(function($exception)
 {
     return View::make('error404');
+});
+
+//when the model in the database doesn't exist
+App::error(function(ModelNotFoundException $e)
+{
+    return View::make('errorDatabaseModelNotFound');
 });
 
 Route::resource('user', 'UserController');

@@ -104,7 +104,7 @@ class articleDetailController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        $article = Article::find($id);
+        $article = Article::findOrFail($id);
 
         $view = View::make('articleDetail.show')
             ->with('article', $article)->with('comments',$article->getComments());
@@ -122,7 +122,7 @@ class articleDetailController extends \BaseController {
 
   public function showSmall($id)
 	{
-       $article = Article::find($id);
+       $article = Article::findOrFail($id);
 
         // show the view and pass the nerd to it
    
@@ -132,7 +132,7 @@ class articleDetailController extends \BaseController {
   
   public function showPreview($id)
 	{
-       $article = Article::find($id);
+       $article = Article::findOrFail($id);
 
         // show the view and pass the nerd to it
    
@@ -149,7 +149,7 @@ class articleDetailController extends \BaseController {
 	public function edit($id)
 	{
       //check if the user who edit the profil is the owner
-      $article = Article::find($id);
+      $article = Article::findOrFail($id);
       if(Auth::id() == $article->user_ID)
         {
         // show the edit form and pass the nerd
@@ -188,7 +188,7 @@ class articleDetailController extends \BaseController {
     
             // edit
           
-            $article = Article::find($id);
+            $article = Article::findOrFail($id);
             $article->title       = Input::get('title');
           if($_FILES['picture']['error'] == 0){
             $article->picture      = $_FILES['picture']['name'];
@@ -228,7 +228,7 @@ class articleDetailController extends \BaseController {
 	public function destroy($id)
 	{
       //check if the user who edit the profil is the owner
-       $article = Article::find($id);
+       $article = Article::findOrFail($id);
       if(Auth::id() == $article->user_ID)
         {
 		    

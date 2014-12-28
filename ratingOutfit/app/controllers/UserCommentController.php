@@ -73,7 +73,7 @@ class UserCommentController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$comment = UserComment::find($id);
+		$comment = UserComment::findOrFail($id);
 
        
         return View::make('subview/userComment')

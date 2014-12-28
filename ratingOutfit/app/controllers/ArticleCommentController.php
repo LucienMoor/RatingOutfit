@@ -88,7 +88,7 @@ class ArticleCommentController extends \BaseController {
 	public function show($id)
 	{
 		
-        $comment = ArticleComment::find($id);
+        $comment = ArticleComment::findOrFail($id);
 
        
         return View::make('subview/articleComments')
