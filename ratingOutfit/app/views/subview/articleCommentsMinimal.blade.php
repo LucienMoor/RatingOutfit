@@ -17,5 +17,14 @@
     <br />
     @endforeach
   </div>
-  @include('subview/articleCommentForm')
+  @include('subview/articleCommentForm',['articleID'=>$article->id])
 </html>
+@if (!Auth::check()) 
+<script>
+  $(document).ready(function(){
+    $("#textAreaComment").attr("disabled", true);
+    $("#textAreaComment").val("you have to sign in first");
+    
+  });
+</script>
+@endif

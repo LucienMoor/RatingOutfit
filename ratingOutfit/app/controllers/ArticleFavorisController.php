@@ -20,7 +20,7 @@ class ArticleFavorisController extends \BaseController {
 	}
   	public function listFavorites($id)
     {
-      $user = User::find($id);
+      $user = User::findOrFail($id);
       $articles = $user->getFavoriteArticles();
 		  $view =  View::make('articleDetail.index')->with('articles',$articles);
       $header = View::make('profil/userProfil')->with('user',$user);
@@ -81,7 +81,7 @@ class ArticleFavorisController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$favorite = Favorite::find($id);
+		$favorite = Favorite::findOrFail($id);
         // show the view and pass the article ID
         return View::make('articleDetail.show')
             ->with('article', $favorite->article_ID);
@@ -120,7 +120,7 @@ class ArticleFavorisController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$favorite = Favorite::find($id);
+		$favorite = Favorite::findOrFail($id);
     $favorite->delete();
     return Redirect::to('articleDetail');
 	}

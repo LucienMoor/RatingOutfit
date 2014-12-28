@@ -56,12 +56,15 @@ div.small{
   resize: none;
 }
 .gigante{
-  transform:scale(5,5);
+    position: relative;
+    top: 200px;
+    left: 200px;
+  -webkit-transform:scale(3,3);
 }
 
 div.grid-item{
   float: left;
-  background: #D26;
+  background: #E9D5EB;
   border: 2px solid #333;
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
@@ -93,6 +96,10 @@ div.randomArticles{
     text-align: center;
     width:90%;    
   }
+div.randomArticles img{
+  max-width:60%;
+  max-height:60%;
+}
 
 div.popularArticles {
     display:table-cell;

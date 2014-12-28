@@ -4,10 +4,10 @@ CSRF protection -> done
 footer
 messages d'infos -> done
 Logo HE-ARC ?
-valeurs défaut formulaire -> calendrier
+valeurs défaut formulaire -> calendrier -> done
 CSS sur certaines pages
 sign in link -> done
-delete bad routes
+delete bad routes-> done
 nav bar on users and articles list -> done
 {{{}}} for htmlentities
 home page placement random and popular and label -> done
@@ -20,11 +20,11 @@ Filtre -> done
 login filter -> done
 login pas redirect sur home
 create article only for log in user -> done
-home nav bar not in create article
-add to contact only for log in user 
-check if id exist in database
+home nav bar not in create article -> done
+add to contact only for log in user -> done
+check if id exist in database -> done with a new view who display an error like the error404 view
 bug pour report user si login
 report only once
-save the comment if the user must log in
+save the comment if the user must log in -> "done". the textarea is disabled if you are not loged
 Add style and gender
 change debug var

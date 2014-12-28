@@ -57,7 +57,6 @@ class ArticleCommentController extends \BaseController {
 	 */
 	public function store()
 	{
-    Session::put('user_ID',2);
 		$rules = array(
       'comment'      =>  'required'
     ); 
@@ -70,12 +69,12 @@ class ArticleCommentController extends \BaseController {
             // store
              $articleComment = new ArticleComment;
              $articleComment->user_ID      = Auth::id();
-             $articleComment->article_ID   = 1;//Article::find(1)->id;
+             $articleComment->article_ID   = Input::get('articleID');//Article::find(1)->id;
              $articleComment->comment      = Input::get('comment');
              $articleComment->save();
        // redirect
             Session::flash('success_message', 'Successfully created a comment!');
-            return Redirect::to('articleComment');
+            return Redirect::to('articleDetail/'.Input::get('articleID'));
         }
     ;}
 
@@ -89,7 +88,7 @@ class ArticleCommentController extends \BaseController {
 	public function show($id)
 	{
 		
-        $comment = ArticleComment::find($id);
+        $comment = ArticleComment::findOrFail($id);
 
        
         return View::make('subview/articleComments')
