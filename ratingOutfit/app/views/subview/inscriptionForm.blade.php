@@ -37,7 +37,7 @@
      
       {{ $errors->first('birthDate', '<div class="alert alert-danger" role="alert">:message</div>') }}
       <strong>{{ Form::label('birthDate', 'Birth date : ')  }}</strong>
-      {{ Form::input('date', 'birthDate'); }}
+      {{ Form::input('date', 'birthDate', $value = "1990-01-01"); }}
      </div>
      <div>
       {{ Form::label('picture', 'Would you like to already upload a picture for your profil ? : ')  }}

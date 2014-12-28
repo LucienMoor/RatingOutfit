@@ -15,8 +15,9 @@
     <?php $data=array('userID'=>Auth::id(),'contactID'=>$user->id);
              echo View::make('Contacts.AddRemoveForm')->with('data',$data);
             ?>
-    <!-- delete the user (uses the destroy method DESTROY /users/{id} -->
+    <!-- delete the user (uses the destroy method DESTROY /users/{id} or  edit the user (uses the edit method found at GET /users/{id}/edit -->
      @if(Auth::id()==$user->id)
+      <a class="btn btn-small btn-info" href="{{ URL::to('user/' . $user->id . '/edit') }}">Edit your profil</a>
       {{ Form::open(array('url' => 'user/' . $user->id)) }}
       {{ Form::hidden('_method', 'DELETE') }}
       {{ Form::submit('Delete my profil', array('class' => 'btn btn-danger')) }}
