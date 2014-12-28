@@ -78,7 +78,7 @@ div.small{
   width:20%;
 }
 .grid{
-  float:left;
+  float:center;
 }
 
 div.page{
@@ -94,6 +94,26 @@ div.randomArticles{
     width:90%;    
   }
 
-div.popularArticles{
+div.popularArticles {
     display:table-cell;
   }
+
+div.createArticle{
+  font-weight: bold; 
+  font-size: 2em;
+}
+
+/*Filter*/
+div.filter { 
+  float:left;
+  border:2px solid #ccc; 
+  width:150px; 
+  height: 100px; 
+  overflow-y: scroll; 
+}
+
+label.labelCheckbox {
+  font-weight: bold; 
+}
+
+
