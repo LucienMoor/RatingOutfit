@@ -1,12 +1,18 @@
 <label class="checkbox">{{ Form::checkbox('all', 'all')}} Show all</label>
+<?php $style=Style::getStyleArray() ?>
+
 <label class="labelCheckbox">Gender</label>
+
   <label class="checkbox">{{ Form::checkbox('female', 'female')}} Women</label>
   <label class="checkbox">{{ Form::checkbox('man', 'man')}}Men</label>
-  <label class="checkbox">{{ Form::checkbox('unisex', 'unisex') }}Unisex</label>
-
+  <label class="checkbox">{{ Form::checkbox('child', 'child')}}Child</label>
+  <label class="checkbox">{{ Form::checkbox('unisex', 'unisex')}}Unisex</label>
+  
 <label class="labelCheckbox">Style</label>
-  <label class="checkbox">{{ Form::checkbox('emo', 'emo')}}Emo</label>
-  <label class="checkbox">{{ Form::checkbox('fluo', 'fluo')}}Fluo</label>
+  @foreach ($style as $value)
+    <label class="checkbox"> {{ Form::checkbox($value, $value)}} {{$value}}</label>
+  @endforeach    
+
 
 
 <script>
