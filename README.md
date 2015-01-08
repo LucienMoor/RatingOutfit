@@ -1,6 +1,4 @@
 RatingOutfit
 ============
 
-Rating outfit
-test
-test2
+Projet Rating outfit pour le cours de dev.Web
