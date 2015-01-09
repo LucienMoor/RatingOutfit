@@ -3,10 +3,10 @@
 
 <label class="labelCheckbox">Gender</label>
 
-  <label class="checkbox">{{ Form::checkbox('female', 'female')}} Women</label>
-  <label class="checkbox">{{ Form::checkbox('man', 'man')}}Men</label>
-  <label class="checkbox">{{ Form::checkbox('child', 'child')}}Child</label>
-  <label class="checkbox">{{ Form::checkbox('unisex', 'unisex')}}Unisex</label>
+  <label class="checkbox">{{ Form::checkbox('Women', 'Women')}} Women</label>
+  <label class="checkbox">{{ Form::checkbox('Men', 'Men')}}Men</label>
+  <label class="checkbox">{{ Form::checkbox('Child', 'Child')}}Child</label>
+  <label class="checkbox">{{ Form::checkbox('Unisex', 'Unisex')}}Unisex</label>
   
 <label class="labelCheckbox">Style</label>
   @foreach ($style as $value)
